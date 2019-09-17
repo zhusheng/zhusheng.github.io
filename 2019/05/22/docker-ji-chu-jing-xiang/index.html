@@ -4,8 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="Docker镜像我们可以把常用的环境制作成Docker镜像， 然后基于镜像生成容器。比如我们可以把Hadoop做成一个镜像，然后我们可以基于这个镜像快速提供一个处于运行中的Hadoop环境。
+Docker官方为我们提供了镜像仓库，Docke">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Hexo</title>
+    <title>Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -285,13 +286,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        
                     </div>
                 </div>
             </div>
@@ -413,7 +414,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-17
+                    2019-05-22
                 </div>
 
                 
@@ -429,15 +430,81 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h1><p>我们可以把常用的环境制作成Docker镜像， 然后基于镜像生成容器。比如我们可以把Hadoop做成一个镜像，然后我们可以基于这个镜像快速提供一个处于运行中的Hadoop环境。</p>
+<p>Docker官方为我们提供了镜像仓库，Docker Hub，我们可以从其中搜索和下载我们需要的镜像。</p>
+<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>从Docker Hub的Ubuntu仓库下载最新的镜像</p>
+<pre class=" language-bash"><code class="language-bash">docker pull ubuntu或docker pull ubuntu:latest</code></pre>
+<p>下载指定版本的镜像</p>
+<pre class=" language-bash"><code class="language-bash">docker pull ubuntu:14.04</code></pre>
+<p>说明：上面指令的实际全称是：<code>docker pull registry.hub.docker.com/ubuntu:14.04</code>,默认的注册服务器为<code>registry.hub.docker.com</code>.</p>
+<h2 id="显示镜像列表"><a href="#显示镜像列表" class="headerlink" title="显示镜像列表"></a>显示镜像列表</h2><pre class=" language-bash"><code class="language-bash">docker images</code></pre>
+<p>说明：罗列本地主机上已有的镜像，ID是镜像的唯一标示号，同一个ID的镜像可以有多个TAG，如果ID一样说明镜像就是相同的。</p>
+<h2 id="获取镜像详细信息"><a href="#获取镜像详细信息" class="headerlink" title="获取镜像详细信息"></a>获取镜像详细信息</h2><pre class=" language-bash"><code class="language-bash">docker inspect <span class="token operator">&lt;</span>ID<span class="token operator">></span></code></pre>
+<h2 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h2><p>使用镜像创建一个容器，并运行bash应用</p>
+<pre class=" language-bash"><code class="language-bash">docker run -it ubuntu /bin/bash</code></pre>
+<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><p>根据TAG或IMAGE ID进行删除操作，可以同时删除多个</p>
+<pre class=" language-bash"><code class="language-bash">docker rmi <span class="token operator">&lt;</span>IMAGE1 IMAGE2 <span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
+<p>根据TAG删除，先删除TAG，如果只有一个TAG，直接删除镜像本身</p>
+<pre class=" language-bash"><code class="language-bash">docker rmi sshd</code></pre>
+<p>根据id删除，直接删除镜像本身，无论有几个TAG。如果镜像有容器，需要先停止和删除相关的容器，然后才可以删除镜像。</p>
+<pre class=" language-bash"><code class="language-bash">docker rmi 433478589107 c84640d67d8a</code></pre>
+<p>我们也可以强制删除镜像，但不建议使用，可能会造成很多遗留问题。</p>
+<pre class=" language-bash"><code class="language-bash">docker rmi -f 433478589107</code></pre>
+<p>说明：如果镜像有容器的话，需要先删除容器，然后删除镜像。查看本机上的所有容器“docker ps -a”，删除容器“docker rm e81”。无论是删除容器还是删除镜像，在填写ID的时候我们可以只写前面的几个字符，只要保证是唯一的即可。</p>
+<h2 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h2><p>方式有三种：基于已有镜像的容器创建、基于本地模版导入、基于Dockerfile创建。最常见的是基于Dockerfile创建，其次是基于已有镜像的容器创建。</p>
+<ul>
+<li>方式1:基于已有镜像的容器创建</li>
+</ul>
+<p>根据已有的镜像创建一个容器；在容器中修改内容，如安装软件、新增文件等；保存容器为新的<br>镜像。指令格式如下：<code>docker commit [options] CONTAINER [REPOSITORY[:TAG]]</code></p>
+<pre class=" language-bash"><code class="language-bash">options:
+    -a, author，作者信息
+    -m,    message，提交信息
+    -p, pause， 提交时暂停容器运行</code></pre>
+<p>示例如下：</p>
+<pre class=" language-bash"><code class="language-bash">docker commit -m <span class="token string">"Added json gem"</span> -a <span class="token string">"zhusheng"</span> 0b2616b0e5a8 ouruser/sinatra:v2</code></pre>
+<p>说明：说明：<code>0b2616b0e5a8</code>为容器ID；<code>ouruser/sinatra:v2</code>为<code>REPOSITORY:TAG</code></p>
+<ul>
+<li>方式2:基于本地模版导入</li>
+</ul>
+<p>模版下载地址，推荐使用<a href="http://openvz.org/Download/templates/precreated" target="_blank" rel="noopener">OpenVZ模版</a></p>
+<p>示例：下载ubuntu-14.04模版压缩包，进行导入操作</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> ubuntu-14.04-x86_64-minimal.tag.gz <span class="token operator">|</span>docker <span class="token function">import</span> - ubuntu:14.04</code></pre>
+<ul>
+<li>方式3:使用Dockerfile制作镜像</li>
+</ul>
+<p>Dockerfile是一个文本格式的配置文件，用户可以使用Dockerfile快速创建自定义的镜像。制作镜像的指令:<code>docker build -t &lt;IMAGE NAME&gt; .</code></p>
+<p>Dockerfile使用步骤：首先，在宿主机下新建一个文件下作为工作目录；然后，进入该工作目录，创建一个Dockerfile，我们在Dockerfile文件中编写我们生成镜像的代码逻辑。我们可以将过程中需要用到的软件放到工作目录下，在Dockerfile中使用ADD添加，也可以在工作目录下编写一些脚本，然后在Dockerfile中调用；最后，在工作目录下，执行创建镜像指令。</p>
+<p>示例：</p>
+<pre class=" language-bash"><code class="language-bash">docker build -t zhusheng/mysql5.6:dockerfile <span class="token keyword">.</span></code></pre>
+<p>注意：结尾有一个“.”</p>
+<h2 id="存出和载入镜像"><a href="#存出和载入镜像" class="headerlink" title="存出和载入镜像"></a>存出和载入镜像</h2><ul>
+<li>存出镜像为本地文件</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">docker save -o ubuntu_14.04.tar ubuntu:14.04</code></pre>
+<p>示意图如下：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/01.png" alt="image"></p>
+<ul>
+<li>导入本地文件为镜像</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">docker load <span class="token operator">&lt;</span> ubuntu_14.04.tar
+或
+docker load --input ubuntu_14.04.tar</code></pre>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/02.png" alt="image"></p>
+<h2 id="上传镜像到Docker-Hub仓库"><a href="#上传镜像到Docker-Hub仓库" class="headerlink" title="上传镜像到Docker Hub仓库"></a>上传镜像到Docker Hub仓库</h2><p>首先需要注册Docker账号;</p>
+<p>其次是tag名称格式必须为：<code>&lt;docker username&gt;/imagename:tag</code></p>
+<p>示例:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 添加新的标签</span>
+docker tag hello-world zhushengdocker/hello-world:1.0
+<span class="token comment" spellcheck="true"># 上传镜像</span>
+docker push zhushengdocker/hello-world:1.0</code></pre>
+<p>示意图如下：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/03.png" alt="image"></p>
+<p>我们登录Docker账号查看效果:</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/04.png" alt="image"></p>
+<h2 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h2><p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">阿里云访问地址</a></p>
+<p>进入阿里云容器Hub服务的控制台，并申请成为开发者。点击左侧的加速器帮助页面就会显示你的专属加速器地址。阿里为每个人都给了一个私有的个人加速器。我的个人加速器地址为：<code>https://j95dutr4.mirror.aliyuncs.com</code></p>
+<p>示意图如下：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/05.png" alt="image"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -618,9 +685,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hello World》
+                    《》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/17/hello-world/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/05/22/docker-ji-chu-jing-xiang/" property="cc:attributionName"
                rel="cc:attributionURL">
                 John Doe
             </a> 采用
@@ -660,30 +727,32 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/17/hello-world/">
+                <a href="/2019/05/22/docker-ji-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="docker基础">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">docker基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            Docker仓库Docker Hub账号Username：zhushengdocker
+Password：xxxxxxx
+备注：Docker Hub逐渐迁移到Docker Store
+阿里Docker Hub加速器可以提高国内对Docker
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -692,7 +761,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -703,38 +771,47 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/22/docker-ji-chu-rong-qi/">
+                <a href="/2018/09/07/example/">
                     <div class="card-image">
                         
+                        <img src="/source/images/xxx.jpg" class="responsive-img" alt="typora-vue-theme Theme introduction">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">typora-vue-theme Theme introduction</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker容器容器是镜像的实例，是一个独立的环境。
-运行容器
-方式1
-
-使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。
-docker create -ti ubuntu:14.04
-
+                            This is the content of your custom post summary. If there is a value for this attribute, the post card summary will display the text, otherwise the program will automatically intercept part of the post content as a summary.
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Markdown/" class="post-category" target="_blank">
+                                    Markdown
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Typora/" target="_blank">
+                        <span class="chip bg-color">Typora</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/" target="_blank">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
                 </div>
                 
             </div>

@@ -4,8 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="docker基础, Hexo">
+    <meta name="description" content="Docker仓库Docker Hub账号Username：zhushengdocker
+Password：xxxxxxx
+备注：Docker Hub逐渐迁移到Docker Store
+阿里Docker Hub加速器可以提高国内对Docker">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Hexo</title>
+    <title>docker基础 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -285,13 +288,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        docker基础
                     </div>
                 </div>
             </div>
@@ -413,7 +416,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-17
+                    2019-05-22
                 </div>
 
                 
@@ -429,15 +432,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="Docker仓库"><a href="#Docker仓库" class="headerlink" title="Docker仓库"></a>Docker仓库</h1><h2 id="Docker-Hub账号"><a href="#Docker-Hub账号" class="headerlink" title="Docker Hub账号"></a>Docker Hub账号</h2><pre class=" language-bash"><code class="language-bash">Username：zhushengdocker
+Password：xxxxxxx</code></pre>
+<p>备注：Docker Hub逐渐迁移到Docker Store</p>
+<p>阿里Docker Hub加速器可以提高国内对Docker的访问速度，我在阿里Docker Hub上注册了一个账号，系统会为每个人分配一个加速器地址，我的加速器地址为：<code>https://j95dutr4.mirror.aliyuncs.com</code>。我将其添加到我的Docker配置里面，如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/24.png" alt="image"></p>
+<h2 id="Docker-Hub仓库基本操作"><a href="#Docker-Hub仓库基本操作" class="headerlink" title="Docker Hub仓库基本操作"></a>Docker Hub仓库基本操作</h2><p>Ubuntu是一个仓库，它的各个版本分支对应具体的镜像，也就是说镜像是存储在仓库里的。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 搜索仓库</span>
+docker search Ubuntu
+<span class="token comment" spellcheck="true"># 从仓库下载镜像</span>
+docker pull ubuntu:14.04</code></pre>
+<h2 id="私有仓库的创建和使用"><a href="#私有仓库的创建和使用" class="headerlink" title="私有仓库的创建和使用"></a>私有仓库的创建和使用</h2><p>1、在192.168.1.241机器上下载registry镜像，并启动一个仓库容器。安装完docker之后，可以通过官方提供的registry镜像简单搭建一个本地私有仓库，指令自动下载并启动一个registry容器，创建本地的私有仓库服务。默认仓库创建在容器的/tmp/registry目录下，也可以通过-v指定位置。监听端口为5000。示意图如下：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/25.png" alt="image"></p>
+<p>2、在Mac上或其它机器安装有docker的机器上上传镜像到仓库，在Mac上下载一个busybox镜像，然后改名为192.168.1.241:5000/busybox，我们注意到前面的名称为仓库的ip:5000。示意图如下：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/26.png" alt="image"></p>
+<p>上传镜像</p>
+<pre class=" language-bash"><code class="language-bash">docker push 192.168.1.241:5000/busybox</code></pre>
+<p>示意图如下：<br><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/27.png" alt="image"></p>
+<p>出错了是因为docker 1.3.x之后，与docker registry的交互默认采用的是https，我们修改Mac的docker配置文件daemon.json，在其中增加如下内容：”insecure-registries”: [“<ip>:5000”] ，我们可以同时增加多个ip。示意图如下：</ip></p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/28.png" alt="image"></p>
+<p>重新执行上传，上传成功！示意图如下：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/29.png" alt="image"></p>
+<p>3、查看仓库镜像列表</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/30.png" alt="image"></p>
+<p>4、下载仓库镜像</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/31.png" alt="image"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -618,9 +637,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hello World》
+                    《docker基础》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/17/hello-world/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/05/22/docker-ji-chu/" property="cc:attributionName"
                rel="cc:attributionURL">
                 John Doe
             </a> 采用
@@ -660,48 +679,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2019/09/17/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            John Doe
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2019/05/22/docker-ji-chu-rong-qi/">
                     <div class="card-image">
@@ -722,6 +702,44 @@
 使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。
 docker create -ti ubuntu:14.04
 
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            John Doe
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/05/22/docker-ji-chu-jing-xiang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Docker镜像我们可以把常用的环境制作成Docker镜像， 然后基于镜像生成容器。比如我们可以把Hadoop做成一个镜像，然后我们可以基于这个镜像快速提供一个处于运行中的Hadoop环境。
+Docker官方为我们提供了镜像仓库，Docke
                         
                     </div>
                     <div class="publish-info">

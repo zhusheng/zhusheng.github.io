@@ -4,8 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="Docker容器容器是镜像的实例，是一个独立的环境。
+运行容器
+方式1
+
+使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。
+docker create -ti ubuntu:14.04
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Hexo</title>
+    <title>Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -285,13 +291,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        
                     </div>
                 </div>
             </div>
@@ -413,7 +419,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-17
+                    2019-05-22
                 </div>
 
                 
@@ -429,15 +435,112 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="Docker容器"><a href="#Docker容器" class="headerlink" title="Docker容器"></a>Docker容器</h1><p>容器是镜像的实例，是一个独立的环境。</p>
+<h2 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h2><ul>
+<li>方式1</li>
+</ul>
+<p>使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。</p>
+<pre class=" language-bash"><code class="language-bash">docker create -ti ubuntu:14.04
+docker start c498a45c62a9</code></pre>
+<ul>
+<li>方式2</li>
+</ul>
+<p>新建并启动-docker run,docker run等价与docker create +docker start</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 示例1</span>
+docker run ubuntu:14.04 /bin/echo <span class="token string">"hello world"</span>
+<span class="token comment" spellcheck="true"># 示例2</span>
+docker run -it ubuntu:14.04 /bin/bash
+<span class="token comment" spellcheck="true"># 示例3:指定容器名称</span>
+docker run -it --name ubuntu_test1 ubuntu /bin/bash</code></pre>
+<pre class=" language-bash"><code class="language-bash">Options:
+    -t, 让docker分配一个伪终端并绑定到容器的标准输入上
+    -i, 让容器的标准输入保持打开
+    -d, 表示在后台运行</code></pre>
+<p>补充示例：下面的指令会在后台启动一个容器，而且每隔1秒输出一条语句</p>
+<pre class=" language-bash"><code class="language-bash">docker run -d ubuntu:14.04 /bin/sh -c "while <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token keyword">echo</span> hello zhusheng<span class="token punctuation">;</span> <span class="token function">sleep</span> 1<span class="token punctuation">;</span> done”</code></pre>
+<h2 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h2><pre class=" language-bash"><code class="language-bash">Docker logs  <span class="token operator">&lt;</span>container id<span class="token operator">></span></code></pre>
+<h2 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 停止容器</span>
+docker stop <span class="token operator">&lt;</span>docker id<span class="token operator">></span>
+<span class="token comment" spellcheck="true"># 强制杀死容器</span>
+docker <span class="token function">kill</span> <span class="token operator">&lt;</span>docker id<span class="token operator">></span></code></pre>
+<h2 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查看所有的容器，包含Exited、Up 状态的所有容器</span>
+docker <span class="token function">ps</span> -a
+<span class="token comment" spellcheck="true"># 查看运行的容器，Up 状态</span>
+docker <span class="token function">ps</span>
+<span class="token comment" spellcheck="true"># 查看容器id</span>
+docker <span class="token function">ps</span> -a -q
+docker <span class="token function">ps</span>  -q</code></pre>
+<h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动</span>
+docker start <span class="token operator">&lt;</span>docker id<span class="token operator">></span>
+<span class="token comment" spellcheck="true"># 重启</span>
+docker restart <span class="token operator">&lt;</span>docker id<span class="token operator">></span></code></pre>
+<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><p>带有-d参数启动的容器会在后台运行，用户无法看到容器中的信息，如下所示:</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动容器在后台运行</span>
+docker run -d ubuntu:14.04 /bin/bash</code></pre>
+<p>如果现在我们需要进入容器，有几种方式，如下所示：<br>（1）attach,docker自带，但是窗口会自动同步<br>（2）exec, docker自带，更加高级<br>（3）nsenter工具，包含于util-linux包2.23之后的版本</p>
+<ul>
+<li>使用attach进入容器</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">docker attach <span class="token operator">&lt;</span>container id<span class="token operator">></span> or <span class="token operator">&lt;</span>container name<span class="token operator">></span></code></pre>
+<ul>
+<li>使用exec进入容器—推荐</li>
+</ul>
+<pre class=" language-bash"><code class="language-bash">docker <span class="token function">exec</span> -it dd744b6466bf /bin/bash</code></pre>
+<ul>
+<li>使用nsenter</li>
+</ul>
+<p>安装nsenter</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /tmp<span class="token punctuation">;</span>curl https://www.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.tar.gz <span class="token operator">|</span> <span class="token function">tar</span> -zxvf-<span class="token punctuation">;</span> <span class="token function">cd</span> util-linux-2.24<span class="token punctuation">;</span>
+
+./configure --without-ncurses</code></pre>
+<p>如果提示缺少gcc、cc、cl.exe，执行<code>yum install -y gcc</code>后重新执行检查<code>make nsenter &amp;&amp; cp nsenter /usr/local/bin</code></p>
+<p>使用nsenter</p>
+<p>每一个容器都有.State.Pid，所以这个命令除了容器的id需要我们根据docker ps -a去查找，其他的全部为固定的格式。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 获取.State.Pid</span>
+docker inspect -f <span class="token punctuation">{</span><span class="token punctuation">{</span>.State.Pid<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">&lt;</span>container id<span class="token operator">></span> or <span class="token operator">&lt;</span>container name<span class="token operator">></span>
+<span class="token comment" spellcheck="true"># 根据.State.Pid进入容器</span>
+nsenter --target <span class="token operator">&lt;</span>PID<span class="token operator">></span> --mount --uts --ipc --net –pid</code></pre>
+<p>示意图如下：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/06.png" alt="image"></p>
+<p>参数说明：</p>
+<ul>
+<li>mount参数是进去到mount namespace中</li>
+<li>uts参数是进入到uts namespace中</li>
+<li>ipc参数是进入到System V IPC namaspace中</li>
+<li>net参数是进入到network namespace中</li>
+<li>pid参数是进入到pid namespace中</li>
+<li>user参数是进入到user namespace中</li>
+</ul>
+<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 删除</span>
+docker <span class="token function">rm</span> d2016d5fe1b3
+<span class="token comment" spellcheck="true"># 强制删除</span>
+docker <span class="token function">rm</span> -f d2016d5fe1b3
+<span class="token comment" spellcheck="true">#停用全部运行中的容器</span>
+docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -q<span class="token variable">)</span></span>
+<span class="token comment" spellcheck="true">#删除全部容器</span>
+docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span>
+<span class="token comment" spellcheck="true">#一条命令实现停用并删除容器</span>
+docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -q<span class="token variable">)</span></span> <span class="token operator">&amp;</span> docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span></code></pre>
+<h2 id="Docker备份"><a href="#Docker备份" class="headerlink" title="Docker备份"></a>Docker备份</h2><h3 id="本地备份"><a href="#本地备份" class="headerlink" title="本地备份"></a>本地备份</h3><p>（1）导出容器<br>不管这个容器是什么状态，使用docker export导出成为一个压缩文件</p>
+<pre class=" language-bash"><code class="language-bash">docker <span class="token function">export</span> ce5 <span class="token operator">></span> test_for_run.tar</code></pre>
+<p>（2）导入容器<br>导入的容器会成为一个镜像</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> test_for_run.tar <span class="token operator">|</span> docker <span class="token function">import</span> - test/ubuntu:v1.0</code></pre>
+<p>示意图如下：</p>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/07.png" alt="image"></p>
+<h3 id="Docker-Hub备份"><a href="#Docker-Hub备份" class="headerlink" title="Docker Hub备份"></a>Docker Hub备份</h3><p>（1）备份成镜像</p>
+<pre class=" language-bash"><code class="language-bash">docker commit -p huatec01 zhushengdocker/hadoop3node:huatec01
+docker commit -p huatec02 zhushengdocker/hadoop3node:huatec02
+docker commit -p huatec03 zhushengdocker/hadoop3node:huatec03</code></pre>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/08.png" alt="image"><br><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/09.png" alt="image"></p>
+<p>（2）登录docker账号</p>
+<pre class=" language-bash"><code class="language-bash">docker login
+<span class="token comment" spellcheck="true">#输入用户名和密码</span></code></pre>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/10.png" alt="image"></p>
+<p>（3）上传镜像</p>
+<pre class=" language-bash"><code class="language-bash">docker push zhushengdocker/hadoop3node:huatec01</code></pre>
+<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/11.png" alt="image"></p>
+<p>（4）恢复镜像</p>
+<pre class=" language-bash"><code class="language-bash">docker pull zhushengdocker/hadoop3node:huatec01</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -618,9 +721,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hello World》
+                    《》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/17/hello-world/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/05/22/docker-ji-chu-rong-qi/" property="cc:attributionName"
                rel="cc:attributionURL">
                 John Doe
             </a> 采用
@@ -660,10 +763,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2019/09/17/hello-world/">
                     <div class="card-image">
@@ -681,9 +783,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -692,7 +794,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -703,25 +804,22 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/22/docker-ji-chu-rong-qi/">
+                <a href="/2019/05/22/docker-ji-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="docker基础">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">docker基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker容器容器是镜像的实例，是一个独立的环境。
-运行容器
-方式1
-
-使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。
-docker create -ti ubuntu:14.04
-
+                            Docker仓库Docker Hub账号Username：zhushengdocker
+Password：xxxxxxx
+备注：Docker Hub逐渐迁移到Docker Store
+阿里Docker Hub加速器可以提高国内对Docker
                         
                     </div>
                     <div class="publish-info">
