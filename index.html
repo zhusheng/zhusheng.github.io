@@ -106,6 +106,17 @@
     
     <li class="hide-on-med-and-down nav-item" >
 		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
 					  <a href="/friends" class="waves-effect waves-light">
 						
 						<i class="fa fa-address-book"></i>
@@ -191,6 +202,17 @@
 					<i class="fa fa-fw fa-user-circle-o"></i>
 					
 					关于
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/contact" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-comments"></i>
+					
+					Contact
 				</a>
           
         </li>
@@ -403,7 +425,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         <div class="container">
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <div class="title center-align">typora-vue-theme Theme introduction</div>
+                    <div class="title center-align">example</div>
                     <div class="description center-align">
                     
                         This is the content of your custom post summary. If there is a value for this attribute, the post card summary will display the text, otherwise the program will automatically intercept part of the post content as a summary.
@@ -488,7 +510,77 @@ $(function () {
                     
 
                     
+                        
 
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="title center-align">
+        <i class="fa fa-music"></i>&nbsp;&nbsp;听听音乐
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'false' === 'true',
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"五月雨变奏电音","artist":"AnimeVibe","url":"http://xxx.com/music1.mp3","cover":"http://xxx.com/music-cover1.png"},{"name":"Take me hand","artist":"DAISHI DANCE,Cecile Corbel","url":"/medias/music/music2.mp3","cover":"/medias/music/cover2.png"},{"name":"Shape of You","artist":"J.Fla","url":"http://xxx.com/music3.mp3","cover":"http://xxx.com/music-cover3.png"}]')
+    });
+});
+</script>
+                    
+
+                    
+                        <link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
+<div class="video-player">
+    
+    <div class="title center-align">
+        <i class="fa fa-video-camera"></i>&nbsp;&nbsp;精彩视频
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="dplayer" class="dplayer-video"
+                    ></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/dplayer/DPlayer.min.js"></script>
+<script>
+    $(function () {
+        new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: 'false' === 'true',
+            theme: '#42b983',
+            loop: 'false' === 'true',
+            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
+            preload: 'auto',
+            volume: Number('0.7'),
+            video: {
+                url: 'https://media.w3.org/2010/05/sintel/trailer.mp4',
+                pic: '',
+                thumbnails: ''
+            }
+        });
+    });
+</script>
                     
 
                     <div id="recommend-sections" class="recommend">
@@ -513,7 +605,7 @@ $(function () {
                     
                 </div>
                 <a href="/2018/09/07/example/" target="_blank">
-                    <h3 class="post-title">typora-vue-theme Theme introduction</h3>
+                    <h3 class="post-title">example</h3>
                 </a>
                 <p class="post-description">This is the content of your custom post summary. If there is a value for this attribute, the post card summary will display the text, otherwise the program will automatically intercept part of the post content as a summary.</p>
                 <a href="/2018/09/07/example/" target="_blank"
@@ -578,115 +670,230 @@ $(function () {
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2019/05/22/docker-ji-chu-rong-qi/">
+                    <a href="/2018/09/15/tensorflow-wen-jian-cao-zuo/">
                         <div class="card-image">
                             
+                            <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow文件操作">
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title"></span>
+                            <span class="card-title">tensorflow文件操作</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Docker容器容器是镜像的实例，是一个独立的环境。
-运行容器
-方式1
-
-使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。
-docker create -ti ubuntu:14.04
-
+                                tensorflow文件操作
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-15
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-user fa-fw"></i>
-                                John Doe
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
                     
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/05/22/docker-ji-chu/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="docker基础">
-                            
-                            <span class="card-title">docker基础</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Docker仓库Docker Hub账号Username：zhushengdocker
-Password：xxxxxxx
-备注：Docker Hub逐渐迁移到Docker Store
-阿里Docker Hub加速器可以提高国内对Docker
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-user fa-fw"></i>
-                                John Doe
-                                
-                            </span>
-                        </div>
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/tensorflow/" target="_blank">
+                            <span class="chip bg-color">tensorflow</span>
+                        </a>
+                        
                     </div>
-
                     
                 </div>
             </div>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2019/05/22/docker-ji-chu-jing-xiang/">
+                    <a href="/2018/09/15/tensorflow-xian-cheng-he-dui-lie/">
                         <div class="card-image">
                             
+                            <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow线程和队列">
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                            
-                            <span class="card-title"></span>
+                            <span class="card-title">tensorflow线程和队列</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Docker镜像我们可以把常用的环境制作成Docker镜像， 然后基于镜像生成容器。比如我们可以把Hadoop做成一个镜像，然后我们可以基于这个镜像快速提供一个处于运行中的Hadoop环境。
-Docker官方为我们提供了镜像仓库，Docke
+                                tensorflow线程和队列
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-15
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-user fa-fw"></i>
-                                John Doe
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/tensorflow/" target="_blank">
+                            <span class="chip bg-color">tensorflow</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/10/tensorflow-she-zhi/">
+                        <div class="card-image">
+                            
+                            <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow设置">
+                            
+                            <span class="card-title">tensorflow设置</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                tensorflow设置，比如一些参数设置等。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/tensorflow/" target="_blank">
+                            <span class="chip bg-color">tensorflow</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/09/tensorflow-ru-men-an-li/">
+                        <div class="card-image">
+                            
+                            <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow入门案例">
+                            
+                            <span class="card-title">tensorflow入门案例</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                tensorflow入门案例，通过一个示例讲述tensorflow的基本运行步骤。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/tensorflow/" target="_blank">
+                            <span class="chip bg-color">tensorflow</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/08/tensorflow-zhang-liang-he-bian-liang/">
+                        <div class="card-image">
+                            
+                            <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow张量和变量">
+                            
+                            <span class="card-title">tensorflow张量和变量</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                主要介绍tensorflow的张量和变量的基本用法。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-08
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/tensorflow/" target="_blank">
+                            <span class="chip bg-color">tensorflow</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -696,9 +903,9 @@ Docker官方为我们提供了镜像仓库，Docke
                     <a href="/2018/09/07/example/">
                         <div class="card-image">
                             
-                            <img src="/source/images/xxx.jpg" class="responsive-img" alt="typora-vue-theme Theme introduction">
+                            <img src="/source/images/xxx.jpg" class="responsive-img" alt="example">
                             
-                            <span class="card-title">typora-vue-theme Theme introduction</span>
+                            <span class="card-title">example</span>
                         </div>
                     </a>
 
@@ -741,6 +948,144 @@ Docker官方为我们提供了镜像仓库，Docke
                 </div>
             </div>
             
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/07/tensorflow-jie-shao/">
+                        <div class="card-image">
+                            
+                            <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow介绍">
+                            
+                            <span class="card-title">tensorflow介绍</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                tensorflow基本介绍、安装以及核心的几个概念。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/tensorflow/" target="_blank">
+                            <span class="chip bg-color">tensorflow</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2017/09/12/python-wen-jian-cao-zuo/">
+                        <div class="card-image">
+                            
+                            <img src="/images/python.png" class="responsive-img" alt="python文件操作">
+                            
+                            <span class="card-title">python文件操作</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                python文件操作
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/python/" target="_blank">
+                            <span class="chip bg-color">python</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2017/09/10/python-wang-luo-qing-qiu/">
+                        <div class="card-image">
+                            
+                            <img src="/images/python.png" class="responsive-img" alt="python网络请求">
+                            
+                            <span class="card-title">python网络请求</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                python网络请求，介绍了urllib库、request库以及网络请求状态码。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/python/" target="_blank">
+                            <span class="chip bg-color">python</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
     </article>
 
@@ -756,6 +1101,9 @@ Docker官方为我们提供了镜像仓库，Docke
             <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
             <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">6.3k</span>&nbsp;字
             
             
             

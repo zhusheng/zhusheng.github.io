@@ -4,9 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo">
-    <meta name="description" content="Docker镜像我们可以把常用的环境制作成Docker镜像， 然后基于镜像生成容器。比如我们可以把Hadoop做成一个镜像，然后我们可以基于这个镜像快速提供一个处于运行中的Hadoop环境。
-Docker官方为我们提供了镜像仓库，Docke">
+    <meta name="keywords" content="tensorflow设置, Hexo">
+    <meta name="description" content="tensorflow设置，比如一些参数设置等。
+log_device_placement它是Session的一个参数，设置该参数log_device_placement=True，让我们可以看到我们的tensor、op是在哪台设备、哪颗CP">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@ Docker官方为我们提供了镜像仓库，Docke">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hexo</title>
+    <title>tensorflow设置 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -101,6 +101,17 @@ Docker官方为我们提供了镜像仓库，Docke">
 						<i class="fa fa-user-circle-o"></i>
 						
 						<span>关于</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
 					</a>
           
         </li>
@@ -198,6 +209,17 @@ Docker官方为我们提供了镜像仓库，Docke">
         
 <li class="m-nav-item">
 			
+				<a href="/contact" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-comments"></i>
+					
+					Contact
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
 				<a href="/friends" class="waves-effect waves-light">
 					
 					<i class="fa fa-fw fa-address-book"></i>
@@ -286,13 +308,13 @@ Docker官方为我们提供了镜像仓库，Docke">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/tensorflow.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        
+                        tensorflow设置
                     </div>
                 </div>
             </div>
@@ -401,12 +423,25 @@ Docker官方为我们提供了镜像仓库，Docke">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tensorflow/" target="_blank">
+                                <span class="chip bg-color">tensorflow</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                tensorflow
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -414,9 +449,23 @@ Docker官方为我们提供了镜像仓库，Docke">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-22
+                    2018-09-10
                 </div>
 
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        204
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        1 分
+                    </div>
+                    
                 
 				
 				
@@ -430,81 +479,29 @@ Docker官方为我们提供了镜像仓库，Docke">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h1><p>我们可以把常用的环境制作成Docker镜像， 然后基于镜像生成容器。比如我们可以把Hadoop做成一个镜像，然后我们可以基于这个镜像快速提供一个处于运行中的Hadoop环境。</p>
-<p>Docker官方为我们提供了镜像仓库，Docker Hub，我们可以从其中搜索和下载我们需要的镜像。</p>
-<h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>从Docker Hub的Ubuntu仓库下载最新的镜像</p>
-<pre class=" language-bash"><code class="language-bash">docker pull ubuntu或docker pull ubuntu:latest</code></pre>
-<p>下载指定版本的镜像</p>
-<pre class=" language-bash"><code class="language-bash">docker pull ubuntu:14.04</code></pre>
-<p>说明：上面指令的实际全称是：<code>docker pull registry.hub.docker.com/ubuntu:14.04</code>,默认的注册服务器为<code>registry.hub.docker.com</code>.</p>
-<h2 id="显示镜像列表"><a href="#显示镜像列表" class="headerlink" title="显示镜像列表"></a>显示镜像列表</h2><pre class=" language-bash"><code class="language-bash">docker images</code></pre>
-<p>说明：罗列本地主机上已有的镜像，ID是镜像的唯一标示号，同一个ID的镜像可以有多个TAG，如果ID一样说明镜像就是相同的。</p>
-<h2 id="获取镜像详细信息"><a href="#获取镜像详细信息" class="headerlink" title="获取镜像详细信息"></a>获取镜像详细信息</h2><pre class=" language-bash"><code class="language-bash">docker inspect <span class="token operator">&lt;</span>ID<span class="token operator">></span></code></pre>
-<h2 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h2><p>使用镜像创建一个容器，并运行bash应用</p>
-<pre class=" language-bash"><code class="language-bash">docker run -it ubuntu /bin/bash</code></pre>
-<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><p>根据TAG或IMAGE ID进行删除操作，可以同时删除多个</p>
-<pre class=" language-bash"><code class="language-bash">docker rmi <span class="token operator">&lt;</span>IMAGE1 IMAGE2 <span class="token punctuation">..</span>.<span class="token operator">></span></code></pre>
-<p>根据TAG删除，先删除TAG，如果只有一个TAG，直接删除镜像本身</p>
-<pre class=" language-bash"><code class="language-bash">docker rmi sshd</code></pre>
-<p>根据id删除，直接删除镜像本身，无论有几个TAG。如果镜像有容器，需要先停止和删除相关的容器，然后才可以删除镜像。</p>
-<pre class=" language-bash"><code class="language-bash">docker rmi 433478589107 c84640d67d8a</code></pre>
-<p>我们也可以强制删除镜像，但不建议使用，可能会造成很多遗留问题。</p>
-<pre class=" language-bash"><code class="language-bash">docker rmi -f 433478589107</code></pre>
-<p>说明：如果镜像有容器的话，需要先删除容器，然后删除镜像。查看本机上的所有容器“docker ps -a”，删除容器“docker rm e81”。无论是删除容器还是删除镜像，在填写ID的时候我们可以只写前面的几个字符，只要保证是唯一的即可。</p>
-<h2 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h2><p>方式有三种：基于已有镜像的容器创建、基于本地模版导入、基于Dockerfile创建。最常见的是基于Dockerfile创建，其次是基于已有镜像的容器创建。</p>
-<ul>
-<li>方式1:基于已有镜像的容器创建</li>
-</ul>
-<p>根据已有的镜像创建一个容器；在容器中修改内容，如安装软件、新增文件等；保存容器为新的<br>镜像。指令格式如下：<code>docker commit [options] CONTAINER [REPOSITORY[:TAG]]</code></p>
-<pre class=" language-bash"><code class="language-bash">options:
-    -a, author，作者信息
-    -m,    message，提交信息
-    -p, pause， 提交时暂停容器运行</code></pre>
-<p>示例如下：</p>
-<pre class=" language-bash"><code class="language-bash">docker commit -m <span class="token string">"Added json gem"</span> -a <span class="token string">"zhusheng"</span> 0b2616b0e5a8 ouruser/sinatra:v2</code></pre>
-<p>说明：说明：<code>0b2616b0e5a8</code>为容器ID；<code>ouruser/sinatra:v2</code>为<code>REPOSITORY:TAG</code></p>
-<ul>
-<li>方式2:基于本地模版导入</li>
-</ul>
-<p>模版下载地址，推荐使用<a href="http://openvz.org/Download/templates/precreated" target="_blank" rel="noopener">OpenVZ模版</a></p>
-<p>示例：下载ubuntu-14.04模版压缩包，进行导入操作</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> ubuntu-14.04-x86_64-minimal.tag.gz <span class="token operator">|</span>docker <span class="token function">import</span> - ubuntu:14.04</code></pre>
-<ul>
-<li>方式3:使用Dockerfile制作镜像</li>
-</ul>
-<p>Dockerfile是一个文本格式的配置文件，用户可以使用Dockerfile快速创建自定义的镜像。制作镜像的指令:<code>docker build -t &lt;IMAGE NAME&gt; .</code></p>
-<p>Dockerfile使用步骤：首先，在宿主机下新建一个文件下作为工作目录；然后，进入该工作目录，创建一个Dockerfile，我们在Dockerfile文件中编写我们生成镜像的代码逻辑。我们可以将过程中需要用到的软件放到工作目录下，在Dockerfile中使用ADD添加，也可以在工作目录下编写一些脚本，然后在Dockerfile中调用；最后，在工作目录下，执行创建镜像指令。</p>
-<p>示例：</p>
-<pre class=" language-bash"><code class="language-bash">docker build -t zhusheng/mysql5.6:dockerfile <span class="token keyword">.</span></code></pre>
-<p>注意：结尾有一个“.”</p>
-<h2 id="存出和载入镜像"><a href="#存出和载入镜像" class="headerlink" title="存出和载入镜像"></a>存出和载入镜像</h2><ul>
-<li>存出镜像为本地文件</li>
-</ul>
-<pre class=" language-bash"><code class="language-bash">docker save -o ubuntu_14.04.tar ubuntu:14.04</code></pre>
-<p>示意图如下：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/01.png" alt="image"></p>
-<ul>
-<li>导入本地文件为镜像</li>
-</ul>
-<pre class=" language-bash"><code class="language-bash">docker load <span class="token operator">&lt;</span> ubuntu_14.04.tar
-或
-docker load --input ubuntu_14.04.tar</code></pre>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/02.png" alt="image"></p>
-<h2 id="上传镜像到Docker-Hub仓库"><a href="#上传镜像到Docker-Hub仓库" class="headerlink" title="上传镜像到Docker Hub仓库"></a>上传镜像到Docker Hub仓库</h2><p>首先需要注册Docker账号;</p>
-<p>其次是tag名称格式必须为：<code>&lt;docker username&gt;/imagename:tag</code></p>
-<p>示例:</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 添加新的标签</span>
-docker tag hello-world zhushengdocker/hello-world:1.0
-<span class="token comment" spellcheck="true"># 上传镜像</span>
-docker push zhushengdocker/hello-world:1.0</code></pre>
-<p>示意图如下：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/03.png" alt="image"></p>
-<p>我们登录Docker账号查看效果:</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/04.png" alt="image"></p>
-<h2 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h2><p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">阿里云访问地址</a></p>
-<p>进入阿里云容器Hub服务的控制台，并申请成为开发者。点击左侧的加速器帮助页面就会显示你的专属加速器地址。阿里为每个人都给了一个私有的个人加速器。我的个人加速器地址为：<code>https://j95dutr4.mirror.aliyuncs.com</code></p>
-<p>示意图如下：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/05.png" alt="image"></p>
+                <p>tensorflow设置，比如一些参数设置等。</p>
+<h2 id="log-device-placement"><a href="#log-device-placement" class="headerlink" title="log_device_placement"></a>log_device_placement</h2><p>它是Session的一个参数，设置该参数<em>log_device_placement=True</em>，让我们可以看到我们的tensor、op是在哪台设备、哪颗CPU上运行的。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'TF_CPP_MIN_LOG_LEVEL'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'2'</span>
+
+<span class="token comment" spellcheck="true"># 创建tensor</span>
+a <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">5.0</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">6.0</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 创建op</span>
+sum <span class="token operator">=</span> tf<span class="token punctuation">.</span>add<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 通过Session执行graph</span>
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span>config<span class="token operator">=</span>tf<span class="token punctuation">.</span>ConfigProto<span class="token punctuation">(</span>log_device_placement<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>运行结果如下：</p>
+<pre class=" language-bash"><code class="language-bash">Device mapping: no known devices.
+Add: <span class="token punctuation">(</span>Add<span class="token punctuation">)</span>: /job:localhost/replica:0/task:0/device:CPU:0
+Const: <span class="token punctuation">(</span>Const<span class="token punctuation">)</span>: /job:localhost/replica:0/task:0/device:CPU:0
+Const_1: <span class="token punctuation">(</span>Const<span class="token punctuation">)</span>: /job:localhost/replica:0/task:0/device:CPU:0
+11.0</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -685,11 +682,11 @@ docker push zhushengdocker/hello-world:1.0</code></pre>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《》
+                    《tensorflow设置》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/05/22/docker-ji-chu-jing-xiang/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/09/10/tensorflow-she-zhi/" property="cc:attributionName"
                rel="cc:attributionURL">
-                John Doe
+                Zhu Sheng
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -731,35 +728,43 @@ docker push zhushengdocker/hello-world:1.0</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/05/22/docker-ji-chu/">
+                <a href="/2018/09/15/tensorflow-xian-cheng-he-dui-lie/">
                     <div class="card-image">
                         
+                        <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow线程和队列">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="docker基础">
-                        
-                        <span class="card-title">docker基础</span>
+                        <span class="card-title">tensorflow线程和队列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker仓库Docker Hub账号Username：zhushengdocker
-Password：xxxxxxx
-备注：Docker Hub逐渐迁移到Docker Store
-阿里Docker Hub加速器可以提高国内对Docker
+                            tensorflow线程和队列
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-15
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tensorflow/" target="_blank">
+                        <span class="chip bg-color">tensorflow</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -771,30 +776,30 @@ Password：xxxxxxx
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/09/07/example/">
+                <a href="/2018/09/09/tensorflow-ru-men-an-li/">
                     <div class="card-image">
                         
-                        <img src="/source/images/xxx.jpg" class="responsive-img" alt="typora-vue-theme Theme introduction">
+                        <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow入门案例">
                         
-                        <span class="card-title">typora-vue-theme Theme introduction</span>
+                        <span class="card-title">tensorflow入门案例</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            This is the content of your custom post summary. If there is a value for this attribute, the post card summary will display the text, otherwise the program will automatically intercept part of the post content as a summary.
+                            tensorflow入门案例，通过一个示例讲述tensorflow的基本运行步骤。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-07
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Markdown/" class="post-category" target="_blank">
-                                    Markdown
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
                                 </a>
                             
                             
@@ -804,12 +809,8 @@ Password：xxxxxxx
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Typora/" target="_blank">
-                        <span class="chip bg-color">Typora</span>
-                    </a>
-                    
-                    <a href="/tags/Markdown/" target="_blank">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/tensorflow/" target="_blank">
+                        <span class="chip bg-color">tensorflow</span>
                     </a>
                     
                 </div>
@@ -929,6 +930,9 @@ Password：xxxxxxx
             <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
             <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">6.3k</span>&nbsp;字
             
             
             

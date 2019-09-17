@@ -4,14 +4,16 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo">
-    <meta name="description" content="Docker容器容器是镜像的实例，是一个独立的环境。
-运行容器
-方式1
+    <meta name="keywords" content="tensorflow线程和队列, Hexo">
+    <meta name="description" content="tensorflow线程和队列。
+队列Queuetensorflow有两种队列：
 
-使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。
-docker create -ti ubuntu:14.04
-">
+tf.FIFOQueue：先进先出队列，按顺序出队列
+
+tf.RandomShuffleQueue：随机出队列
+
+
+两个API的使用基本差不多，我们以FIF">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +21,7 @@ docker create -ti ubuntu:14.04
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hexo</title>
+    <title>tensorflow线程和队列 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -106,6 +108,17 @@ docker create -ti ubuntu:14.04
 						<i class="fa fa-user-circle-o"></i>
 						
 						<span>关于</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
 					</a>
           
         </li>
@@ -203,6 +216,17 @@ docker create -ti ubuntu:14.04
         
 <li class="m-nav-item">
 			
+				<a href="/contact" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-comments"></i>
+					
+					Contact
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
 				<a href="/friends" class="waves-effect waves-light">
 					
 					<i class="fa fa-fw fa-address-book"></i>
@@ -291,13 +315,13 @@ docker create -ti ubuntu:14.04
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/tensorflow.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        
+                        tensorflow线程和队列
                     </div>
                 </div>
             </div>
@@ -406,12 +430,25 @@ docker create -ti ubuntu:14.04
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tensorflow/" target="_blank">
+                                <span class="chip bg-color">tensorflow</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                tensorflow
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -419,9 +456,23 @@ docker create -ti ubuntu:14.04
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-22
+                    2018-09-15
                 </div>
 
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        989
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        4 分
+                    </div>
+                    
                 
 				
 				
@@ -435,112 +486,162 @@ docker create -ti ubuntu:14.04
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Docker容器"><a href="#Docker容器" class="headerlink" title="Docker容器"></a>Docker容器</h1><p>容器是镜像的实例，是一个独立的环境。</p>
-<h2 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h2><ul>
-<li>方式1</li>
-</ul>
-<p>使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。</p>
-<pre class=" language-bash"><code class="language-bash">docker create -ti ubuntu:14.04
-docker start c498a45c62a9</code></pre>
+                <p>tensorflow线程和队列。</p>
+<h2 id="队列Queue"><a href="#队列Queue" class="headerlink" title="队列Queue"></a>队列Queue</h2><p>tensorflow有两种队列：</p>
 <ul>
-<li>方式2</li>
+<li><p>tf.FIFOQueue：先进先出队列，按顺序出队列</p>
+</li>
+<li><p>tf.RandomShuffleQueue：随机出队列</p>
+</li>
 </ul>
-<p>新建并启动-docker run,docker run等价与docker create +docker start</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 示例1</span>
-docker run ubuntu:14.04 /bin/echo <span class="token string">"hello world"</span>
-<span class="token comment" spellcheck="true"># 示例2</span>
-docker run -it ubuntu:14.04 /bin/bash
-<span class="token comment" spellcheck="true"># 示例3:指定容器名称</span>
-docker run -it --name ubuntu_test1 ubuntu /bin/bash</code></pre>
-<pre class=" language-bash"><code class="language-bash">Options:
-    -t, 让docker分配一个伪终端并绑定到容器的标准输入上
-    -i, 让容器的标准输入保持打开
-    -d, 表示在后台运行</code></pre>
-<p>补充示例：下面的指令会在后台启动一个容器，而且每隔1秒输出一条语句</p>
-<pre class=" language-bash"><code class="language-bash">docker run -d ubuntu:14.04 /bin/sh -c "while <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token keyword">echo</span> hello zhusheng<span class="token punctuation">;</span> <span class="token function">sleep</span> 1<span class="token punctuation">;</span> done”</code></pre>
-<h2 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h2><pre class=" language-bash"><code class="language-bash">Docker logs  <span class="token operator">&lt;</span>container id<span class="token operator">></span></code></pre>
-<h2 id="停止容器"><a href="#停止容器" class="headerlink" title="停止容器"></a>停止容器</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 停止容器</span>
-docker stop <span class="token operator">&lt;</span>docker id<span class="token operator">></span>
-<span class="token comment" spellcheck="true"># 强制杀死容器</span>
-docker <span class="token function">kill</span> <span class="token operator">&lt;</span>docker id<span class="token operator">></span></code></pre>
-<h2 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查看所有的容器，包含Exited、Up 状态的所有容器</span>
-docker <span class="token function">ps</span> -a
-<span class="token comment" spellcheck="true"># 查看运行的容器，Up 状态</span>
-docker <span class="token function">ps</span>
-<span class="token comment" spellcheck="true"># 查看容器id</span>
-docker <span class="token function">ps</span> -a -q
-docker <span class="token function">ps</span>  -q</code></pre>
-<h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动</span>
-docker start <span class="token operator">&lt;</span>docker id<span class="token operator">></span>
-<span class="token comment" spellcheck="true"># 重启</span>
-docker restart <span class="token operator">&lt;</span>docker id<span class="token operator">></span></code></pre>
-<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><p>带有-d参数启动的容器会在后台运行，用户无法看到容器中的信息，如下所示:</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动容器在后台运行</span>
-docker run -d ubuntu:14.04 /bin/bash</code></pre>
-<p>如果现在我们需要进入容器，有几种方式，如下所示：<br>（1）attach,docker自带，但是窗口会自动同步<br>（2）exec, docker自带，更加高级<br>（3）nsenter工具，包含于util-linux包2.23之后的版本</p>
-<ul>
-<li>使用attach进入容器</li>
-</ul>
-<pre class=" language-bash"><code class="language-bash">docker attach <span class="token operator">&lt;</span>container id<span class="token operator">></span> or <span class="token operator">&lt;</span>container name<span class="token operator">></span></code></pre>
-<ul>
-<li>使用exec进入容器—推荐</li>
-</ul>
-<pre class=" language-bash"><code class="language-bash">docker <span class="token function">exec</span> -it dd744b6466bf /bin/bash</code></pre>
-<ul>
-<li>使用nsenter</li>
-</ul>
-<p>安装nsenter</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /tmp<span class="token punctuation">;</span>curl https://www.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.tar.gz <span class="token operator">|</span> <span class="token function">tar</span> -zxvf-<span class="token punctuation">;</span> <span class="token function">cd</span> util-linux-2.24<span class="token punctuation">;</span>
-
-./configure --without-ncurses</code></pre>
-<p>如果提示缺少gcc、cc、cl.exe，执行<code>yum install -y gcc</code>后重新执行检查<code>make nsenter &amp;&amp; cp nsenter /usr/local/bin</code></p>
-<p>使用nsenter</p>
-<p>每一个容器都有.State.Pid，所以这个命令除了容器的id需要我们根据docker ps -a去查找，其他的全部为固定的格式。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 获取.State.Pid</span>
-docker inspect -f <span class="token punctuation">{</span><span class="token punctuation">{</span>.State.Pid<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">&lt;</span>container id<span class="token operator">></span> or <span class="token operator">&lt;</span>container name<span class="token operator">></span>
-<span class="token comment" spellcheck="true"># 根据.State.Pid进入容器</span>
-nsenter --target <span class="token operator">&lt;</span>PID<span class="token operator">></span> --mount --uts --ipc --net –pid</code></pre>
-<p>示意图如下：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/06.png" alt="image"></p>
+<p>两个API的使用基本差不多，我们以FIFOQueue为例说明。</p>
+<h3 id="先进先出队列：FIFOQueue"><a href="#先进先出队列：FIFOQueue" class="headerlink" title="先进先出队列：FIFOQueue"></a>先进先出队列：FIFOQueue</h3><p>API</p>
+<pre class=" language-python"><code class="language-python">FIFOQueue<span class="token punctuation">(</span>capacity<span class="token punctuation">,</span> dtypes<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'fifo_queue'</span><span class="token punctuation">)</span></code></pre>
 <p>参数说明：</p>
 <ul>
-<li>mount参数是进去到mount namespace中</li>
-<li>uts参数是进入到uts namespace中</li>
-<li>ipc参数是进入到System V IPC namaspace中</li>
-<li>net参数是进入到network namespace中</li>
-<li>pid参数是进入到pid namespace中</li>
-<li>user参数是进入到user namespace中</li>
+<li><p>capacity：整数。可能存储在此队列中的元素数量的上限。</p>
+</li>
+<li><p>dtypes：DType对象列表。长度dtypes必须等于每个队列元素中的张量数,dtype的类型形状，决定了后面进队列元素形状。</p>
+</li>
 </ul>
-<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 删除</span>
-docker <span class="token function">rm</span> d2016d5fe1b3
-<span class="token comment" spellcheck="true"># 强制删除</span>
-docker <span class="token function">rm</span> -f d2016d5fe1b3
-<span class="token comment" spellcheck="true">#停用全部运行中的容器</span>
-docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -q<span class="token variable">)</span></span>
-<span class="token comment" spellcheck="true">#删除全部容器</span>
-docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span>
-<span class="token comment" spellcheck="true">#一条命令实现停用并删除容器</span>
-docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -q<span class="token variable">)</span></span> <span class="token operator">&amp;</span> docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -aq<span class="token variable">)</span></span></code></pre>
-<h2 id="Docker备份"><a href="#Docker备份" class="headerlink" title="Docker备份"></a>Docker备份</h2><h3 id="本地备份"><a href="#本地备份" class="headerlink" title="本地备份"></a>本地备份</h3><p>（1）导出容器<br>不管这个容器是什么状态，使用docker export导出成为一个压缩文件</p>
-<pre class=" language-bash"><code class="language-bash">docker <span class="token function">export</span> ce5 <span class="token operator">></span> test_for_run.tar</code></pre>
-<p>（2）导入容器<br>导入的容器会成为一个镜像</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> test_for_run.tar <span class="token operator">|</span> docker <span class="token function">import</span> - test/ubuntu:v1.0</code></pre>
-<p>示意图如下：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/07.png" alt="image"></p>
-<h3 id="Docker-Hub备份"><a href="#Docker-Hub备份" class="headerlink" title="Docker Hub备份"></a>Docker Hub备份</h3><p>（1）备份成镜像</p>
-<pre class=" language-bash"><code class="language-bash">docker commit -p huatec01 zhushengdocker/hadoop3node:huatec01
-docker commit -p huatec02 zhushengdocker/hadoop3node:huatec02
-docker commit -p huatec03 zhushengdocker/hadoop3node:huatec03</code></pre>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/08.png" alt="image"><br><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/09.png" alt="image"></p>
-<p>（2）登录docker账号</p>
-<pre class=" language-bash"><code class="language-bash">docker login
-<span class="token comment" spellcheck="true">#输入用户名和密码</span></code></pre>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/10.png" alt="image"></p>
-<p>（3）上传镜像</p>
-<pre class=" language-bash"><code class="language-bash">docker push zhushengdocker/hadoop3node:huatec01</code></pre>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/11.png" alt="image"></p>
-<p>（4）恢复镜像</p>
-<pre class=" language-bash"><code class="language-bash">docker pull zhushengdocker/hadoop3node:huatec01</code></pre>
+<p>相关方法</p>
+<ul>
+<li><p>dequeue(name=None)：出队列</p>
+</li>
+<li><p>enqueue(vals, name=None)：入队列</p>
+</li>
+<li><p>enqueue_many(vals, name=None)：入队列，vals为列表或者元组</p>
+</li>
+<li><p>size(name=None)：队列元素大小</p>
+</li>
+</ul>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'TF_CPP_MIN_LOG_LEVEL'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'2'</span>
+
+<span class="token comment" spellcheck="true"># 1、定义队列,队列长度为3，数据类型为tf.float32</span>
+Q <span class="token operator">=</span> tf<span class="token punctuation">.</span>FIFOQueue<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> tf<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 往队列中放入数据</span>
+enq_many <span class="token operator">=</span> Q<span class="token punctuation">.</span>enqueue_many<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">,</span> <span class="token number">0.3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2、定义读数据、取数据的过程、取数据+1，入队列</span>
+<span class="token comment" spellcheck="true"># 出队列</span>
+de_q<span class="token operator">=</span> Q<span class="token punctuation">.</span>dequeue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 结果 + 1</span>
+data <span class="token operator">=</span> de_q <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 入队列</span>
+en_q <span class="token operator">=</span> Q<span class="token punctuation">.</span>enqueue<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 初始化队列</span>
+    sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>enq_many<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 处理数据，执行100次操作</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># tensorflow的操作有依赖性</span>
+        sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>en_q<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 将队列中的数据都打印出来</span>
+    <span class="token comment" spellcheck="true"># 获取队列长度</span>
+    size <span class="token operator">=</span> Q<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>eval<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"队列大小:"</span><span class="token punctuation">,</span> size<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>Q<span class="token punctuation">.</span>dequeue<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>运行结果如下：</p>
+<pre class=" language-bash"><code class="language-bash">队列大小: 3
+33.2
+33.3
+34.1</code></pre>
+<p>说明：tensor的操作有依赖性。</p>
+<h2 id="队列管理器QueueRunner"><a href="#队列管理器QueueRunner" class="headerlink" title="队列管理器QueueRunner"></a>队列管理器QueueRunner</h2><p>什么是队列管理器？</p>
+<p>我们可以把我们的队列放到队列管理器中，并创建一个线程来运行我们的队列。</p>
+<p>API</p>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>QueueRunner<span class="token punctuation">(</span>queue<span class="token punctuation">,</span> enqueue_ops<span class="token operator">=</span>None<span class="token punctuation">)</span></code></pre>
+<p>参数说明：</p>
+<ul>
+<li><p>queue：A Queue</p>
+</li>
+<li><p>enqueue_ops：添加线程的队列操作列表，[]*2,指定两个线程</p>
+</li>
+</ul>
+<p>相关方法</p>
+<p>create_threads(sess, coord=None,start=False)：创建线程来运行给定会话的入队操作</p>
+<p>参数说明：</p>
+<ul>
+<li><p>start：布尔值，如果True启动线程；如果为False调用者必须调用start()启动线程</p>
+</li>
+<li><p>coord：线程协调器，后面线程管理需要用到</p>
+</li>
+<li><p>return：线程的实例</p>
+</li>
+</ul>
+<h2 id="线程Thread"><a href="#线程Thread" class="headerlink" title="线程Thread"></a>线程Thread</h2><p>线程涉及到2个核心概念：队列管理器和线程协调器。</p>
+<h3 id="线程协调器Coordinator"><a href="#线程协调器Coordinator" class="headerlink" title="线程协调器Coordinator"></a>线程协调器Coordinator</h3><p>什么是线程协调器？</p>
+<p>用来协调子线程和主线程，当我们在会话中开启子线程去做一些事情的时候，我们的会话执行完了，但是子线程还在运行，可是子线程的运行必须依赖会话，所以就会报错。有了线程协调器，我们可以在会话中等待子线程运行结束。</p>
+<p>API</p>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>Coordinator<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>相关方法</p>
+<ul>
+<li><p>request_stop()：请求停止，等待子线程运行结束后停止。</p>
+</li>
+<li><p>should_stop()：检查是否要求停止，立即停止。</p>
+</li>
+<li><p>join(threads=None, stop_grace_period_secs=120) ：将子线程加入Coordinator，等待线程终止进行回收。</p>
+</li>
+</ul>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'TF_CPP_MIN_LOG_LEVEL'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'2'</span>
+
+<span class="token comment" spellcheck="true"># 1、定义1个队列，可以放1000个数据</span>
+Q <span class="token operator">=</span> tf<span class="token punctuation">.</span>FIFOQueue<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> tf<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2、定义要做的事情</span>
+<span class="token comment" spellcheck="true"># 新建变量</span>
+var  <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 变量+1</span>
+data <span class="token operator">=</span> tf<span class="token punctuation">.</span>assign_add<span class="token punctuation">(</span>var<span class="token punctuation">,</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 入队</span>
+en_q <span class="token operator">=</span> Q<span class="token punctuation">.</span>enqueue<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 3、定义队列管理器op, 指定多少个子线程，子线程该干什么事</span>
+qr <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>QueueRunner<span class="token punctuation">(</span>Q<span class="token punctuation">,</span> enqueue_ops<span class="token operator">=</span><span class="token punctuation">[</span>en_q<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+init_op <span class="token operator">=</span> tf<span class="token punctuation">.</span>global_variables_initializer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>init_op<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 线程协调器、线程管理员</span>
+    coord <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>Coordinator<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 真正开启子线程,去做那些事</span>
+    threads <span class="token operator">=</span> qr<span class="token punctuation">.</span>create_threads<span class="token punctuation">(</span>sess<span class="token punctuation">,</span> coord<span class="token operator">=</span>coord<span class="token punctuation">,</span> start<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 主线程，不断的去从队列中读取数据</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>Q<span class="token punctuation">.</span>dequeue<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 回收子线程</span>
+    coord<span class="token punctuation">.</span>request_stop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    coord<span class="token punctuation">.</span>join<span class="token punctuation">(</span>threads<span class="token punctuation">)</span></code></pre>
+<p>运行结果如下：</p>
+<pre class=" language-bash"><code class="language-bash">12.0
+30.0
+46.0
+60.0
+71.0
+84.0
+100.0
+114.0
+126.0
+<span class="token punctuation">..</span>.
+1283.0
+1284.0
+1285.0
+1286.0
+1287.0
+1288.0</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -721,11 +822,11 @@ docker commit -p huatec03 zhushengdocker/hadoop3node:huatec03</code></pre>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《》
+                    《tensorflow线程和队列》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/05/22/docker-ji-chu-rong-qi/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/09/15/tensorflow-xian-cheng-he-dui-lie/" property="cc:attributionName"
                rel="cc:attributionURL">
-                John Doe
+                Zhu Sheng
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -767,32 +868,43 @@ docker commit -p huatec03 zhushengdocker/hadoop3node:huatec03</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/17/hello-world/">
+                <a href="/2018/09/15/tensorflow-wen-jian-cao-zuo/">
                     <div class="card-image">
                         
+                        <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow文件操作">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">tensorflow文件操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            tensorflow文件操作
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-15
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tensorflow/" target="_blank">
+                        <span class="chip bg-color">tensorflow</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -804,35 +916,43 @@ docker commit -p huatec03 zhushengdocker/hadoop3node:huatec03</code></pre>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/22/docker-ji-chu/">
+                <a href="/2018/09/10/tensorflow-she-zhi/">
                     <div class="card-image">
                         
+                        <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow设置">
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="docker基础">
-                        
-                        <span class="card-title">docker基础</span>
+                        <span class="card-title">tensorflow设置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker仓库Docker Hub账号Username：zhushengdocker
-Password：xxxxxxx
-备注：Docker Hub逐渐迁移到Docker Store
-阿里Docker Hub加速器可以提高国内对Docker
+                            tensorflow设置，比如一些参数设置等。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-10
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tensorflow/" target="_blank">
+                        <span class="chip bg-color">tensorflow</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -950,6 +1070,9 @@ Password：xxxxxxx
             <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
             <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">6.3k</span>&nbsp;字
             
             
             

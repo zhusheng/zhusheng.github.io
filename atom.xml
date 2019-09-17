@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhusheng.github.io/"/>
-  <updated>2019-09-17T06:15:37.736Z</updated>
+  <updated>2019-09-17T10:50:13.900Z</updated>
   <id>https://zhusheng.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://zhusheng.github.io/2019/09/17/hello-world/"/>
     <id>https://zhusheng.github.io/2019/09/17/hello-world/</id>
     <published>2019-09-17T06:15:37.736Z</published>
-    <updated>2019-09-17T06:15:37.736Z</updated>
+    <updated>2019-09-17T10:50:13.900Z</updated>
     
     <summary type="html">
     
@@ -40,81 +40,11 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://zhusheng.github.io/2019/05/22/docker-ji-chu-rong-qi/"/>
-    <id>https://zhusheng.github.io/2019/05/22/docker-ji-chu-rong-qi/</id>
-    <published>2019-05-22T07:04:07.640Z</published>
-    <updated>2019-05-22T07:04:07.640Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Docker容器&quot;&gt;&lt;a href=&quot;#Docker容器&quot; class=&quot;headerlink&quot; title=&quot;Docker容器&quot;&gt;&lt;/a&gt;Docker容器&lt;/h1&gt;&lt;p&gt;容器是镜像的实例，是一个独立的环境。&lt;/p&gt;
-&lt;h2 id=&quot;运行容器&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>docker基础</title>
-    <link href="https://zhusheng.github.io/2019/05/22/docker-ji-chu/"/>
-    <id>https://zhusheng.github.io/2019/05/22/docker-ji-chu/</id>
-    <published>2019-05-22T07:04:07.640Z</published>
-    <updated>2019-09-17T07:08:57.574Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Docker仓库&quot;&gt;&lt;a href=&quot;#Docker仓库&quot; class=&quot;headerlink&quot; title=&quot;Docker仓库&quot;&gt;&lt;/a&gt;Docker仓库&lt;/h1&gt;&lt;h2 id=&quot;Docker-Hub账号&quot;&gt;&lt;a href=&quot;#Docker-Hub账号&quot;
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://zhusheng.github.io/2019/05/22/docker-ji-chu-jing-xiang/"/>
-    <id>https://zhusheng.github.io/2019/05/22/docker-ji-chu-jing-xiang/</id>
-    <published>2019-05-22T07:04:07.640Z</published>
-    <updated>2019-05-22T07:04:07.640Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;Docker镜像&quot;&gt;&lt;a href=&quot;#Docker镜像&quot; class=&quot;headerlink&quot; title=&quot;Docker镜像&quot;&gt;&lt;/a&gt;Docker镜像&lt;/h1&gt;&lt;p&gt;我们可以把常用的环境制作成Docker镜像，
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>typora-vue-theme Theme introduction</title>
-    <link href="https://zhusheng.github.io/2018/09/07/example/"/>
-    <id>https://zhusheng.github.io/2018/09/07/example/</id>
-    <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-09-17T08:39:54.456Z</updated>
+    <title>tensorflow文件操作</title>
+    <link href="https://zhusheng.github.io/2018/09/15/tensorflow-wen-jian-cao-zuo/"/>
+    <id>https://zhusheng.github.io/2018/09/15/tensorflow-wen-jian-cao-zuo/</id>
+    <published>2018-09-15T01:25:00.000Z</published>
+    <updated>2019-09-17T11:56:34.489Z</updated>
     
     <summary type="html">
     
@@ -133,12 +63,240 @@
     </summary>
     
     
+      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow线程和队列</title>
+    <link href="https://zhusheng.github.io/2018/09/15/tensorflow-xian-cheng-he-dui-lie/"/>
+    <id>https://zhusheng.github.io/2018/09/15/tensorflow-xian-cheng-he-dui-lie/</id>
+    <published>2018-09-15T01:25:00.000Z</published>
+    <updated>2019-09-17T11:59:45.256Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;tensorflow线程和队列。&lt;/p&gt;
+&lt;h2 id=&quot;队列Queue&quot;&gt;&lt;a href=&quot;#队列Queue&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow设置</title>
+    <link href="https://zhusheng.github.io/2018/09/10/tensorflow-she-zhi/"/>
+    <id>https://zhusheng.github.io/2018/09/10/tensorflow-she-zhi/</id>
+    <published>2018-09-10T01:25:00.000Z</published>
+    <updated>2019-09-17T11:04:21.056Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;tensorflow设置，比如一些参数设置等。&lt;/p&gt;
+&lt;h2 id=&quot;log-device-placement&quot;&gt;&lt;a href=&quot;#log-device-placement&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow入门案例</title>
+    <link href="https://zhusheng.github.io/2018/09/09/tensorflow-ru-men-an-li/"/>
+    <id>https://zhusheng.github.io/2018/09/09/tensorflow-ru-men-an-li/</id>
+    <published>2018-09-09T01:25:00.000Z</published>
+    <updated>2019-09-17T11:02:00.346Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;tensorflow的运行方式分为4步：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;加载数据及定义超参数&lt;/li&gt;
+&lt;li&gt;构建网络&lt;/li&gt;
+&lt;li&gt;训练模型&lt;/li&gt;
+&lt;li&gt;评估模型和进行预测&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例代码如下：&lt;/p&gt;
+&lt;pre class=&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow张量和变量</title>
+    <link href="https://zhusheng.github.io/2018/09/08/tensorflow-zhang-liang-he-bian-liang/"/>
+    <id>https://zhusheng.github.io/2018/09/08/tensorflow-zhang-liang-he-bian-liang/</id>
+    <published>2018-09-08T01:25:00.000Z</published>
+    <updated>2019-09-17T11:01:57.110Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;主要介绍tensorflow的张量和变量的基本用法。&lt;/p&gt;
+&lt;h2 id=&quot;Tensor&quot;&gt;&lt;a href=&quot;#Tensor&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>example</title>
+    <link href="https://zhusheng.github.io/2018/09/07/example/"/>
+    <id>https://zhusheng.github.io/2018/09/07/example/</id>
+    <published>2018-09-07T01:25:00.000Z</published>
+    <updated>2019-09-17T09:56:08.309Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;example&quot;&gt;&lt;a href=&quot;#example&quot; class=&quot;headerlink&quot; title=&quot;example&quot;&gt;&lt;/a&gt;example&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/example.jpg&quot;
+        
+      
+    
+    </summary>
+    
+    
       <category term="Markdown" scheme="https://zhusheng.github.io/categories/Markdown/"/>
     
     
       <category term="Typora" scheme="https://zhusheng.github.io/tags/Typora/"/>
     
       <category term="Markdown" scheme="https://zhusheng.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow介绍</title>
+    <link href="https://zhusheng.github.io/2018/09/07/tensorflow-jie-shao/"/>
+    <id>https://zhusheng.github.io/2018/09/07/tensorflow-jie-shao/</id>
+    <published>2018-09-07T01:25:00.000Z</published>
+    <updated>2019-09-17T11:02:04.410Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;tensorflow介绍&quot;&gt;&lt;a href=&quot;#tensorflow介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python文件操作</title>
+    <link href="https://zhusheng.github.io/2017/09/12/python-wen-jian-cao-zuo/"/>
+    <id>https://zhusheng.github.io/2017/09/12/python-wen-jian-cao-zuo/</id>
+    <published>2017-09-12T01:25:00.000Z</published>
+    <updated>2019-09-17T11:24:30.238Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;文件分割：split-和splitext&quot;&gt;&lt;a href=&quot;#文件分割：split-和splitext&quot; class=&quot;headerlink&quot; title=&quot;文件分割：split() 和splitext()&quot;&gt;&lt;/a&gt;文件分割：split()
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://zhusheng.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://zhusheng.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python网络请求</title>
+    <link href="https://zhusheng.github.io/2017/09/10/python-wang-luo-qing-qiu/"/>
+    <id>https://zhusheng.github.io/2017/09/10/python-wang-luo-qing-qiu/</id>
+    <published>2017-09-10T01:25:00.000Z</published>
+    <updated>2019-09-17T11:24:23.725Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;python网络请求，介绍了urllib库、request库以及网络请求状态码。&lt;/p&gt;
+&lt;h2 id=&quot;urllib库网络请求&quot;&gt;&lt;a href=&quot;#urllib库网络请求&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://zhusheng.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://zhusheng.github.io/tags/python/"/>
     
   </entry>
   

@@ -4,11 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="docker基础, Hexo">
-    <meta name="description" content="Docker仓库Docker Hub账号Username：zhushengdocker
-Password：xxxxxxx
-备注：Docker Hub逐渐迁移到Docker Store
-阿里Docker Hub加速器可以提高国内对Docker">
+    <meta name="keywords" content="tensorflow张量和变量, Hexo">
+    <meta name="description" content="主要介绍tensorflow的张量和变量的基本用法。
+TensorTensor是一个类，包含了属性和常用函数，一个Tensor对象主要包含以下三个部分，如下所示：
+Tensor(&#34;Placeholder:0&#34;, shape=(2, 3), ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@ Password：xxxxxxx
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>docker基础 | Hexo</title>
+    <title>tensorflow张量和变量 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -103,6 +102,17 @@ Password：xxxxxxx
 						<i class="fa fa-user-circle-o"></i>
 						
 						<span>关于</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
 					</a>
           
         </li>
@@ -200,6 +210,17 @@ Password：xxxxxxx
         
 <li class="m-nav-item">
 			
+				<a href="/contact" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-comments"></i>
+					
+					Contact
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
 				<a href="/friends" class="waves-effect waves-light">
 					
 					<i class="fa fa-fw fa-address-book"></i>
@@ -288,13 +309,13 @@ Password：xxxxxxx
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/tensorflow.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        docker基础
+                        tensorflow张量和变量
                     </div>
                 </div>
             </div>
@@ -403,12 +424,25 @@ Password：xxxxxxx
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tensorflow/" target="_blank">
+                                <span class="chip bg-color">tensorflow</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                tensorflow
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -416,9 +450,23 @@ Password：xxxxxxx
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-22
+                    2018-09-08
                 </div>
 
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.4k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        5 分
+                    </div>
+                    
                 
 				
 				
@@ -432,31 +480,224 @@ Password：xxxxxxx
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Docker仓库"><a href="#Docker仓库" class="headerlink" title="Docker仓库"></a>Docker仓库</h1><h2 id="Docker-Hub账号"><a href="#Docker-Hub账号" class="headerlink" title="Docker Hub账号"></a>Docker Hub账号</h2><pre class=" language-bash"><code class="language-bash">Username：zhushengdocker
-Password：xxxxxxx</code></pre>
-<p>备注：Docker Hub逐渐迁移到Docker Store</p>
-<p>阿里Docker Hub加速器可以提高国内对Docker的访问速度，我在阿里Docker Hub上注册了一个账号，系统会为每个人分配一个加速器地址，我的加速器地址为：<code>https://j95dutr4.mirror.aliyuncs.com</code>。我将其添加到我的Docker配置里面，如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/24.png" alt="image"></p>
-<h2 id="Docker-Hub仓库基本操作"><a href="#Docker-Hub仓库基本操作" class="headerlink" title="Docker Hub仓库基本操作"></a>Docker Hub仓库基本操作</h2><p>Ubuntu是一个仓库，它的各个版本分支对应具体的镜像，也就是说镜像是存储在仓库里的。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 搜索仓库</span>
-docker search Ubuntu
-<span class="token comment" spellcheck="true"># 从仓库下载镜像</span>
-docker pull ubuntu:14.04</code></pre>
-<h2 id="私有仓库的创建和使用"><a href="#私有仓库的创建和使用" class="headerlink" title="私有仓库的创建和使用"></a>私有仓库的创建和使用</h2><p>1、在192.168.1.241机器上下载registry镜像，并启动一个仓库容器。安装完docker之后，可以通过官方提供的registry镜像简单搭建一个本地私有仓库，指令自动下载并启动一个registry容器，创建本地的私有仓库服务。默认仓库创建在容器的/tmp/registry目录下，也可以通过-v指定位置。监听端口为5000。示意图如下：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/25.png" alt="image"></p>
-<p>2、在Mac上或其它机器安装有docker的机器上上传镜像到仓库，在Mac上下载一个busybox镜像，然后改名为192.168.1.241:5000/busybox，我们注意到前面的名称为仓库的ip:5000。示意图如下：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/26.png" alt="image"></p>
-<p>上传镜像</p>
-<pre class=" language-bash"><code class="language-bash">docker push 192.168.1.241:5000/busybox</code></pre>
-<p>示意图如下：<br><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/27.png" alt="image"></p>
-<p>出错了是因为docker 1.3.x之后，与docker registry的交互默认采用的是https，我们修改Mac的docker配置文件daemon.json，在其中增加如下内容：”insecure-registries”: [“<ip>:5000”] ，我们可以同时增加多个ip。示意图如下：</ip></p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/28.png" alt="image"></p>
-<p>重新执行上传，上传成功！示意图如下：</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/29.png" alt="image"></p>
-<p>3、查看仓库镜像列表</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/30.png" alt="image"></p>
-<p>4、下载仓库镜像</p>
-<p><img src="https://raw.githubusercontent.com/zhusheng/blog/master/docker/31.png" alt="image"></p>
+                <p>主要介绍tensorflow的张量和变量的基本用法。</p>
+<h2 id="Tensor"><a href="#Tensor" class="headerlink" title="Tensor"></a>Tensor</h2><p>Tensor是一个类，包含了属性和常用函数，一个Tensor对象主要包含以下三个部分，如下所示：</p>
+<pre class=" language-bash"><code class="language-bash">Tensor<span class="token punctuation">(</span><span class="token string">"Placeholder:0"</span>, shape<span class="token operator">=</span><span class="token punctuation">(</span>2, 3<span class="token punctuation">)</span>, dtype<span class="token operator">=</span>float32<span class="token punctuation">)</span>    </code></pre>
+<p>参数说明：</p>
+<ul>
+<li><p>第一部分是<code>Tensor Name</code>，比如：’Constant’、‘Placeholder’、‘Variable’等，0没有什么实质性的含义，只是表示Tensor的顺序，当前是0，那么下一个Tensor就是1了；</p>
+</li>
+<li><p>第二部分是<code>Tensor Shape</code>, 也就是Tensor的形状，这里是[2,3]，2行3列。</p>
+</li>
+<li><p>第三部分是<code>Tensor Type</code>，也就是tensor张量的数据类型。</p>
+</li>
+</ul>
+<h3 id="tensor的形状"><a href="#tensor的形状" class="headerlink" title="tensor的形状"></a>tensor的形状</h3><p>tensor的形状，我们在TensorFlow中使用阶乘表示，它的形状表示如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>阶乘</th>
+<th>名称</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>纯量</td>
+<td>只有大小</td>
+<td>s = 481</td>
+</tr>
+<tr>
+<td>1</td>
+<td>向量</td>
+<td>有大小和方向</td>
+<td>v = [1, 2, 3]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>矩阵</td>
+<td>数据表</td>
+<td>比如:3x2矩阵，m = [[1,2] [3,4] [5,6]]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3阶张量</td>
+<td>数据立体</td>
+<td>比如:1x2x2，t = [[   [[1,2],   [3,4]],      [[5,6],   [7,8]]   ]]</td>
+</tr>
+<tr>
+<td>n</td>
+<td>n阶张量</td>
+<td>n阶张量</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<p>在Tensorflow中，矩阵[n,m]，表示n行m列，行表示特征数量，列表示样本数量。</p>
+<h3 id="tensor的数据类型"><a href="#tensor的数据类型" class="headerlink" title="tensor的数据类型"></a>tensor的数据类型</h3><table>
+<thead>
+<tr>
+<th>Python类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tf.float64</td>
+<td>64位浮点数</td>
+</tr>
+<tr>
+<td>tf.float32</td>
+<td>32位浮点数</td>
+</tr>
+<tr>
+<td>tf.int64</td>
+<td>64位有符号整型</td>
+</tr>
+<tr>
+<td>tf.int32</td>
+<td>32位有符号整型</td>
+</tr>
+<tr>
+<td>tf.int16</td>
+<td>16位有符号整型</td>
+</tr>
+<tr>
+<td>tf.int8</td>
+<td>8位有符号整型</td>
+</tr>
+<tr>
+<td>tf.uint8</td>
+<td>8位无符号整型</td>
+</tr>
+<tr>
+<td>tf.string</td>
+<td>可变长度的字节数组，每一个张量元素都是一个字节数组</td>
+</tr>
+<tr>
+<td>tf.bool</td>
+<td>布尔型</td>
+</tr>
+<tr>
+<td>tf.complex64</td>
+<td>由两个32位浮点数组成的复数：实数和虚数</td>
+</tr>
+<tr>
+<td>tf.qint32</td>
+<td>用于量化Ops的32位有符号整型</td>
+</tr>
+<tr>
+<td>tf.qint8</td>
+<td>用于量化Ops的8位有符号整型</td>
+</tr>
+<tr>
+<td>tf.quint8</td>
+<td>用于量化Ops的8位无符号整型</td>
+</tr>
+</tbody></table>
+<p>float32和float64表示浮点精度，但是实际并不会多分配内存，两者的使用效果差不多，我们常用float32。同理int32和int64也是这样。</p>
+<h3 id="tensor属性"><a href="#tensor属性" class="headerlink" title="tensor属性"></a>tensor属性</h3><p>tensor对象具有如下属性：</p>
+<ul>
+<li><p>graph：张量所在的图</p>
+</li>
+<li><p>op:张量的op</p>
+</li>
+<li><p>name:张量的名称</p>
+</li>
+<li><p>shape:张量的形状</p>
+</li>
+</ul>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+
+a <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"graph-->"</span><span class="token punctuation">,</span> a<span class="token punctuation">.</span>graph<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"op-->"</span><span class="token punctuation">,</span>a<span class="token punctuation">.</span>op<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"name-->"</span><span class="token punctuation">,</span>a<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"shape-->"</span><span class="token punctuation">,</span>a<span class="token punctuation">.</span>shape<span class="token punctuation">)</span></code></pre>
+<h3 id="placeholder"><a href="#placeholder" class="headerlink" title="placeholder"></a>placeholder</h3><p>placeholder是占位符张量。</p>
+<p>我们可以通过<code>tf.placeholder()</code>来创建一个占位符张量，用于在运行图的时候，可以动态赋予数据，我们通过<code>run(fetches, feed_dict=None, graph=None)</code>来动态赋予数据。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+
+plt <span class="token operator">=</span> tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>float32<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>plt<span class="token punctuation">,</span> feed_dict<span class="token operator">=</span><span class="token punctuation">{</span>
+        plt<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h3 id="张量的静态形状和动态形状"><a href="#张量的静态形状和动态形状" class="headerlink" title="张量的静态形状和动态形状"></a>张量的静态形状和动态形状</h3><p><strong>静态形状</strong></p>
+<p>张量的形状在整个图中都是固定不可变的，如果初始的张量中由不确定的形状（如<code>?</code>），我们可以通过<code>set_shape()</code>去设置,通过<code>get_shape()</code>去获取</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+
+plt <span class="token operator">=</span> tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>float32<span class="token punctuation">,</span> <span class="token punctuation">[</span>None<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 列已经确定了，不能修改，行是None不确定可以修改</span>
+plt<span class="token punctuation">.</span>set_shape<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>plt<span class="token punctuation">.</span>get_shape<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p><strong>动态形状</strong></p>
+<p>一种描述原始张量在执行过程中的一种形状，这个张量的形状在图的执行过程中是可以动态改变的。更新动态形状：<code>tf.reshape()</code>。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+
+plt <span class="token operator">=</span> tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>float32<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># reshape重新创建一个张量</span>
+plt2 <span class="token operator">=</span> tf<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>plt<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>plt2<span class="token punctuation">)</span></code></pre>
+<p>注意reshape前后的张量数据个数肯定是不能变的。</p>
+<h3 id="随机张量"><a href="#随机张量" class="headerlink" title="随机张量"></a>随机张量</h3><p>在做神经网络训练的时候，梯度下降的初始参数w、b我们可以使用随机张量，然后通过梯度下降去优化。</p>
+<p>以下是从正态分布创建随机张量的例子：</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>random_normal<span class="token punctuation">(</span>shape<span class="token punctuation">,</span> mean<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> stddev<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>tf<span class="token punctuation">.</span>float32<span class="token punctuation">,</span>seed<span class="token operator">=</span>None<span class="token punctuation">,</span> name<span class="token operator">=</span>None<span class="token punctuation">)</span></code></pre>
+<p>我们关注2个参数，mean表示数据平均值，也就是数学中的μ，stddev表示标准差，也就是数学中的σ。</p>
+<p>当μ=0，σ=1时，也就是标准正态分布。</p>
+<h3 id="张量类型转换"><a href="#张量类型转换" class="headerlink" title="张量类型转换"></a>张量类型转换</h3><p>例如，如果我们的张量的dtype是tf.int32类型的，我们可以将其转换为tf.float32类型的。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> tf<span class="token punctuation">.</span>cast<span class="token punctuation">(</span>a<span class="token punctuation">,</span> tf<span class="token punctuation">.</span>int32<span class="token punctuation">)</span></code></pre>
+<h3 id="张量合并"><a href="#张量合并" class="headerlink" title="张量合并"></a>张量合并</h3><p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+
+b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+c <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 张量合并</span>
+d <span class="token operator">=</span> tf<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>b<span class="token punctuation">,</span>c<span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>eval<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>运行结果如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span><span class="token punctuation">[</span> 1  2  3<span class="token punctuation">]</span>
+ <span class="token punctuation">[</span> 4  5  6<span class="token punctuation">]</span>
+ <span class="token punctuation">[</span> 7  8  9<span class="token punctuation">]</span>
+ <span class="token punctuation">[</span>10 11 12<span class="token punctuation">]</span><span class="token punctuation">]</span>    </code></pre>
+<p>说明：axis=0表示按行合并，axis=1表示按列合并。</p>
+<h2 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h2><p>variable 变量也是一种OP，是一种特殊的张量，能够进行存储持久化。</p>
+<h3 id="Variable的创建"><a href="#Variable的创建" class="headerlink" title="Variable的创建"></a>Variable的创建</h3><p>API</p>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span>initial_value<span class="token operator">=</span>None<span class="token punctuation">,</span>name<span class="token operator">=</span>None<span class="token punctuation">)</span></code></pre>
+<p>代码中涉及到了变量，一定要在Session之前做变量初始化，然后在Session中首先运行初始化的变量。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'TP_CPP_LOG_LEVEL'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'2'</span>
+
+<span class="token comment" spellcheck="true"># 创建变量</span>
+val <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>random_normal<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> mean<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> stddev<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 变量初始化</span>
+init_op <span class="token operator">=</span> tf<span class="token punctuation">.</span>global_variables_initializer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 运行变量初始化op</span>
+    sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>init_op<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 输出变量</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>我们<code>在会话前必须做变量的初始化成一个op</code>，然后<code>在会话中首先运行这个初始化变量</code>。</p>
+<p>我们也可以采用下面的简化方式：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+   sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>global_variables_initializer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -637,11 +878,11 @@ docker pull ubuntu:14.04</code></pre>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《docker基础》
+                    《tensorflow张量和变量》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/05/22/docker-ji-chu/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/09/08/tensorflow-zhang-liang-he-bian-liang/" property="cc:attributionName"
                rel="cc:attributionURL">
-                John Doe
+                Zhu Sheng
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -683,38 +924,43 @@ docker pull ubuntu:14.04</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/05/22/docker-ji-chu-rong-qi/">
+                <a href="/2018/09/09/tensorflow-ru-men-an-li/">
                     <div class="card-image">
                         
+                        <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow入门案例">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">tensorflow入门案例</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker容器容器是镜像的实例，是一个独立的环境。
-运行容器
-方式1
-
-使用docker create容器，容器默认是停止状态的，需要使用docker start来启动容器。
-docker create -ti ubuntu:14.04
-
+                            tensorflow入门案例，通过一个示例讲述tensorflow的基本运行步骤。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-09
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                    tensorflow
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tensorflow/" target="_blank">
+                        <span class="chip bg-color">tensorflow</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -726,33 +972,47 @@ docker create -ti ubuntu:14.04
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/22/docker-ji-chu-jing-xiang/">
+                <a href="/2018/09/07/example/">
                     <div class="card-image">
                         
+                        <img src="/source/images/xxx.jpg" class="responsive-img" alt="example">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">example</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Docker镜像我们可以把常用的环境制作成Docker镜像， 然后基于镜像生成容器。比如我们可以把Hadoop做成一个镜像，然后我们可以基于这个镜像快速提供一个处于运行中的Hadoop环境。
-Docker官方为我们提供了镜像仓库，Docke
+                            This is the content of your custom post summary. If there is a value for this attribute, the post card summary will display the text, otherwise the program will automatically intercept part of the post content as a summary.
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-22
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Markdown/" class="post-category" target="_blank">
+                                    Markdown
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Typora/" target="_blank">
+                        <span class="chip bg-color">Typora</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/" target="_blank">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -870,6 +1130,9 @@ Docker官方为我们提供了镜像仓库，Docke
             <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
             <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">6.3k</span>&nbsp;字
             
             
             

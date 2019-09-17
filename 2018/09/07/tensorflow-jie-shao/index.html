@@ -4,8 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Hexo">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="tensorflow介绍, Hexo">
+    <meta name="description" content="tensorflow介绍TensorFlow由谷歌人工智能团队谷歌大脑（Google Brain）开发和维护的一个深度学习框架。
+tensorflow = tensor + flow，也就是有向数据流，我们使用tensorflow就是构建一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Hexo</title>
+    <title>tensorflow介绍 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -307,13 +308,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/tensorflow.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        tensorflow介绍
                     </div>
                 </div>
             </div>
@@ -422,12 +423,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tensorflow/" target="_blank">
+                                <span class="chip bg-color">tensorflow</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                tensorflow
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -435,21 +449,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-17
+                    2018-09-07
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        125
+                        1.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        5 分
                     </div>
                     
                 
@@ -465,15 +479,143 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="tensorflow介绍"><a href="#tensorflow介绍" class="headerlink" title="tensorflow介绍"></a>tensorflow介绍</h2><p>TensorFlow由谷歌人工智能团队谷歌大脑（Google Brain）开发和维护的一个深度学习框架。</p>
+<p>tensorflow = tensor + flow，也就是有向数据流，我们使用tensorflow就是构建一个数据流图，然后执行该图。</p>
+<p>tensorflow数据流图核心要素：</p>
+<ul>
+<li><p>张量：tensor，数据就是张量</p>
+</li>
+<li><p>节点：operation(op),所有的运算操作都是一个op</p>
+</li>
+<li><p>图：graph，整个程序的结构就是一个graph，定义了整个程序的框架</p>
+</li>
+<li><p>会话：session，用来运行图</p>
+</li>
+</ul>
+<p>说明：</p>
+<ul>
+<li>tensorflow是一个<code>计算密集型的框架</code>，<code>主要是cpu/gpu计算</code>，所以跑tensorflow代码是需要有好的硬件资源的，尤其是GPU资源；</li>
+<li>如django/scrapy等框架是IO密集型框架，主要是磁盘操作；</li>
+</ul>
+<p><strong>tensorflow Playground</strong></p>
+<p>google为我们提供了一个tensorflow在线演示环境<a href="[http://playground.tensorflow.org](http://playground.tensorflow.org)">tensorflow Playground</a></p>
+<h2 id="tensorflow安装"><a href="#tensorflow安装" class="headerlink" title="tensorflow安装"></a>tensorflow安装</h2><h3 id="类型选择"><a href="#类型选择" class="headerlink" title="类型选择"></a>类型选择</h3><p>必须选择以下类型的TensorFlow之一来安装：</p>
+<ul>
+<li><p>TensorFlow仅支持CPU支持。如果您的系统没有NVIDIA®GPU，则必须安装此版本。请注意，此版本的TensorFlow通常会更容易安装（通常在5或10分钟内），因此即使您有NVIDIA GPU，我们建议先安装此版本。</p>
+</li>
+<li><p>TensorFlow支持GPU。TensorFlow程序通常在GPU上比在CPU上运行得更快。因此，如果您的系统具有满足以下所示先决条件的NVIDIA®GPU，并且您需要运行性能关键型应用程序，则应最终安装此版本。</p>
+</li>
+</ul>
+<h3 id="创建隔离环境"><a href="#创建隔离环境" class="headerlink" title="创建隔离环境"></a>创建隔离环境</h3><p>基于virtualenv创建隔离环境</p>
+<pre class=" language-bash"><code class="language-bash">mkvirtualenv -p python3.6 tensorflow</code></pre>
+<p>基于conda创建隔离环境</p>
+<pre class=" language-bash"><code class="language-bash">conda create -n tensorflow python<span class="token operator">=</span>3.6</code></pre>
+<h3 id="Mac下安装"><a href="#Mac下安装" class="headerlink" title="Mac下安装"></a>Mac下安装</h3><p>mac下因为硬件原因，只好安装cpu版本。</p>
+<ol>
+<li>安装Tensorflow</li>
+</ol>
+<p>安装最新版本</p>
+<pre class=" language-bash"><code class="language-bash">pip <span class="token function">install</span> --upgrade tensorflow</code></pre>
+<p>安装指定版本</p>
+<pre class=" language-bash"><code class="language-bash">pip <span class="token function">install</span> tensorflow<span class="token operator">==</span>1.14.0</code></pre>
+<p>验证安装指令</p>
+<pre class=" language-bash"><code class="language-bash">python -c <span class="token string">"import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"</span></code></pre>
+<ol start="2">
+<li>安装tensorboard</li>
+</ol>
+<p>tensorboard是tensorflow提供的可视化界面，建议和tensorflow安装一样的版本。</p>
+<p>安装最新版本</p>
+<pre class=" language-bash"><code class="language-bash">pip <span class="token function">install</span> --upgrade tensorboard</code></pre>
+<p>安装指定版本</p>
+<pre class=" language-bash"><code class="language-bash">pip <span class="token function">install</span> tensorboard<span class="token operator">==</span>1.14.0</code></pre>
+<h3 id="Ubuntu和Linux"><a href="#Ubuntu和Linux" class="headerlink" title="Ubuntu和Linux"></a>Ubuntu和Linux</h3><p>如果要安装GPU版本的，需要安装一大堆NVIDIA软件(不推荐)：</p>
+<ul>
+<li>CUDA®Toolkit 8.0。有关详细信息，请参阅 NVIDIA的文档。确保您将相关的Cuda路径名附加到 LD_LIBRARY_PATH环境变量中，如NVIDIA文档中所述。 与CUDA Toolkit 8.0相关的NVIDIA驱动程序。</li>
+<li>cuDNN v5.1。有关详细信息，请参阅 NVIDIA的文档。确保CUDA_HOME按照NVIDIA文档中的描述创建环境变量。</li>
+<li>具有CUDA Compute Capability 3.0或更高版本的GPU卡。有关支持的GPU卡的列表，请参阅 NVIDIA文档。</li>
+<li>libcupti-dev库，即NVIDIA CUDA Profile Tools界面。此库提供高级分析支持。要安装此库，请发出以下命令：</li>
+</ul>
+<p>使用pip安装,分别有2.7和3.6版本的</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 仅使用 CPU 的版本</span>
+$  pip <span class="token function">install</span> https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.0.1-cp27-none-linux_x86_64.whl
+$  pip3 <span class="token function">install</span> https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.0.1-cp36-cp36m-linux_x86_64.whl</code></pre>
+<h2 id="tensorflow核心概念"><a href="#tensorflow核心概念" class="headerlink" title="tensorflow核心概念"></a>tensorflow核心概念</h2><h3 id="tensor"><a href="#tensor" class="headerlink" title="tensor"></a>tensor</h3><p>tensorflow graph中的数据都是张量。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'TF_CPP_MIN_LOG_LEVEL'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'2'</span>
+
+b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+c <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 张量合并</span>
+d <span class="token operator">=</span> tf<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>b<span class="token punctuation">,</span>c<span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>eval<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>运行结果如下：</p>
+<pre class=" language-bash"><code class="language-bash">Tensor<span class="token punctuation">(</span><span class="token string">"Const:0"</span>, shape<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span>, dtype<span class="token operator">=</span>float32<span class="token punctuation">)</span>
+Tensor<span class="token punctuation">(</span><span class="token string">"Add:0"</span>, shape<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span>, dtype<span class="token operator">=</span>float32<span class="token punctuation">)</span></code></pre>
+<p>我们看到结果都是Tensor对象。</p>
+<h3 id="op"><a href="#op" class="headerlink" title="op"></a>op</h3><p>只要使用tensorflow的API定义的函数都是op，如constant()、add()，tensorflow的op非常丰富。</p>
+<h3 id="graph"><a href="#graph" class="headerlink" title="graph"></a>graph</h3><p>tensorflow有一个默认图，如果我们不指定图的话，默认就是在默认图上运行的。</p>
+<p><strong>默认图</strong></p>
+<p>如果我们不指定图的话，我们使用的是Tensorflow的默认图，它会自动调用<code>graph = tf.get_default_graph()</code>，相当于给程序分配一段内存，我们所有的Tensor、op都是在这张图上。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'TF_CPP_MIN_LOG_LEVEL'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'2'</span>
+
+<span class="token comment" spellcheck="true"># 新建2个tensor</span>
+a <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 新建1个op</span>
+sum <span class="token operator">=</span> tf<span class="token punctuation">.</span>add<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>graph<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>graph<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>sum<span class="token punctuation">.</span>graph<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 默认图</span>
+graph <span class="token operator">=</span> tf<span class="token punctuation">.</span>get_default_graph<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>graph<span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 查看会话所在图</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>sess<span class="token punctuation">.</span>graph<span class="token punctuation">)</span> </code></pre>
+<p>运行结果如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token operator">&lt;</span>tensorflow.python.framework.ops.Graph object at 0x1114caf98<span class="token operator">></span>
+<span class="token operator">&lt;</span>tensorflow.python.framework.ops.Graph object at 0x1114caf98<span class="token operator">></span>
+<span class="token operator">&lt;</span>tensorflow.python.framework.ops.Graph object at 0x1114caf98<span class="token operator">></span>
+<span class="token operator">&lt;</span>tensorflow.python.framework.ops.Graph object at 0x1114caf98<span class="token operator">></span>
+<span class="token operator">&lt;</span>tensorflow.python.framework.ops.Graph object at 0x1114caf98<span class="token operator">></span></code></pre>
+<p>通过运行结果，我们发现tensor、op和session都在一个图上，也就是系统的默认图。<code>with tf.Session() as sess:</code>相当于<code>with tf.Session(graph=g) as sess:</code>。</p>
+<p><strong>自定义图</strong></p>
+<p>默认使用的是tensorflow默认图，我们也是可以自定义图。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">'TF_CPP_MIN_LOG_LEVEL'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'2'</span>
+
+<span class="token comment" spellcheck="true"># 创建图</span>
+g <span class="token operator">=</span> tf<span class="token punctuation">.</span>Graph<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 使用自定义的图</span>
+<span class="token keyword">with</span> g<span class="token punctuation">.</span>as_default<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span></code></pre>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p>session是一个会话，tensorflow的graph都必须在Session中执行。</p>
+<p>会话的作用：</p>
+<ol>
+<li>运行图的结构</li>
+<li>分配资源计算，决定graph在什么设备上运行</li>
+<li>掌握资源（变量的资源、队列、线程）</li>
+</ol>
+<p>会话对象，我们可以执行创建、运行和关闭等操作。</p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python">s <span class="token operator">=</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>会话是graph的上下文环境，只要有Session就有上下文环境。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -654,11 +796,11 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hello World》
+                    《tensorflow介绍》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/17/hello-world/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/09/07/tensorflow-jie-shao/" property="cc:attributionName"
                rel="cc:attributionURL">
-                John Doe
+                Zhu Sheng
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
                 知识共享署名 4.0 国际许可协议
@@ -696,39 +838,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/17/hello-world/">
+                <a href="/2018/09/07/example/">
                     <div class="card-image">
                         
+                        <img src="/source/images/xxx.jpg" class="responsive-img" alt="example">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">example</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            This is the content of your custom post summary. If there is a value for this attribute, the post card summary will display the text, otherwise the program will automatically intercept part of the post content as a summary.
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-07
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            John Doe
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Markdown/" class="post-category" target="_blank">
+                                    Markdown
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Typora/" target="_blank">
+                        <span class="chip bg-color">Typora</span>
+                    </a>
+                    
+                    <a href="/tags/Markdown/" target="_blank">
+                        <span class="chip bg-color">Markdown</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -739,30 +894,30 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/09/15/tensorflow-wen-jian-cao-zuo/">
+                <a href="/2017/09/12/python-wen-jian-cao-zuo/">
                     <div class="card-image">
                         
-                        <img src="/images/tensorflow.png" class="responsive-img" alt="tensorflow文件操作">
+                        <img src="/images/python.png" class="responsive-img" alt="python文件操作">
                         
-                        <span class="card-title">tensorflow文件操作</span>
+                        <span class="card-title">python文件操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            tensorflow文件操作
+                            python文件操作
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
-                                    tensorflow
+                            <a href="/categories/python/" class="post-category" target="_blank">
+                                    python
                                 </a>
                             
                             
@@ -772,8 +927,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/tensorflow/" target="_blank">
-                        <span class="chip bg-color">tensorflow</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
