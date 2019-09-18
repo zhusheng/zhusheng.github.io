@@ -816,6 +816,28 @@ test_data3: <span class="token punctuation">[</span><span class="token punctuati
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '82041603235fd6f4d599',
+        clientSecret: 'ec0b81ae0bf39c5c17bcc7daf8c0e200a146fa48',
+        repo: 'zhusheng.github.io',
+        owner: 'Zhu Sheng',
+        admin: "Zhu Sheng",
+        id: '2018-09-09T09-25-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
 
     
 
@@ -1038,7 +1060,7 @@ test_data3: <span class="token punctuation">[</span><span class="token punctuati
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">10.8k</span>&nbsp;字
+                class="white-color">19.9k</span>&nbsp;字
             
             
             
