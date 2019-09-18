@@ -67,6 +67,123 @@
   </entry>
   
   <entry>
+    <title>VUE入门</title>
+    <link href="https://zhusheng.github.io/2019/09/07/vue-ru-men/"/>
+    <id>https://zhusheng.github.io/2019/09/07/vue-ru-men/</id>
+    <published>2019-09-07T01:25:00.000Z</published>
+    <updated>2019-09-18T06:43:50.931Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://cn.vuejs.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;VUE官网&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.runoob.com/vue2/vue-tutorial.html&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="VUE" scheme="https://zhusheng.github.io/categories/VUE/"/>
+    
+    
+      <category term="VUE" scheme="https://zhusheng.github.io/tags/VUE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>django入门</title>
+    <link href="https://zhusheng.github.io/2019/04/07/django-ru-men/"/>
+    <id>https://zhusheng.github.io/2019/04/07/django-ru-men/</id>
+    <published>2019-04-07T01:25:00.000Z</published>
+    <updated>2019-09-18T10:06:16.543Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/2.2/topics/install/#installing-official-release&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="yingcloud" scheme="https://zhusheng.github.io/categories/yingcloud/"/>
+    
+    
+      <category term="django" scheme="https://zhusheng.github.io/tags/django/"/>
+    
+      <category term="yingcloud" scheme="https://zhusheng.github.io/tags/yingcloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yingcloud项目开发1-环境搭建</title>
+    <link href="https://zhusheng.github.io/2019/04/07/yingcloud-xiang-mu-kai-fa-1-huan-jing-da-jian/"/>
+    <id>https://zhusheng.github.io/2019/04/07/yingcloud-xiang-mu-kai-fa-1-huan-jing-da-jian/</id>
+    <published>2019-04-07T01:25:00.000Z</published>
+    <updated>2019-09-18T10:08:46.602Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;项目集成了rest_framework、rest_framework.authtoken、rest_framework_swagger、rest_auth等基本框架，使得项目可以对外提供swagger rest
+        
+      
+    
+    </summary>
+    
+    
+      <category term="yingcloud" scheme="https://zhusheng.github.io/categories/yingcloud/"/>
+    
+    
+      <category term="django" scheme="https://zhusheng.github.io/tags/django/"/>
+    
+      <category term="yingcloud" scheme="https://zhusheng.github.io/tags/yingcloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Heroku入门</title>
+    <link href="https://zhusheng.github.io/2018/10/07/heroku-ru-men/"/>
+    <id>https://zhusheng.github.io/2018/10/07/heroku-ru-men/</id>
+    <published>2018-10-07T01:25:00.000Z</published>
+    <updated>2019-09-18T07:47:01.109Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Heroku" scheme="https://zhusheng.github.io/categories/Heroku/"/>
+    
+    
+      <category term="Heroku" scheme="https://zhusheng.github.io/tags/Heroku/"/>
+    
+  </entry>
+  
+  <entry>
     <title>tensorflow MNIST自编码网络</title>
     <link href="https://zhusheng.github.io/2018/09/25/tensorflow-mnist-zi-bian-ma-wang-luo/"/>
     <id>https://zhusheng.github.io/2018/09/25/tensorflow-mnist-zi-bian-ma-wang-luo/</id>
@@ -249,34 +366,6 @@
   </entry>
   
   <entry>
-    <title>tensorflow文件操作</title>
-    <link href="https://zhusheng.github.io/2018/09/15/tensorflow-wen-jian-cao-zuo/"/>
-    <id>https://zhusheng.github.io/2018/09/15/tensorflow-wen-jian-cao-zuo/</id>
-    <published>2018-09-15T01:25:00.000Z</published>
-    <updated>2019-09-18T00:32:22.725Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;tensorflow文件操作，包含读取csv文件、csv文件集、图片、二进制文件以及TFRecords文件读取。&lt;/p&gt;
-&lt;h2 id=&quot;读取csv文件&quot;&gt;&lt;a href=&quot;#读取csv文件&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
-    
-    
-      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
-    
-  </entry>
-  
-  <entry>
     <title>tensorflow线程和队列</title>
     <link href="https://zhusheng.github.io/2018/09/15/tensorflow-xian-cheng-he-dui-lie/"/>
     <id>https://zhusheng.github.io/2018/09/15/tensorflow-xian-cheng-he-dui-lie/</id>
@@ -291,6 +380,34 @@
         
           &lt;p&gt;tensorflow线程和队列。&lt;/p&gt;
 &lt;h2 id=&quot;队列Queue&quot;&gt;&lt;a href=&quot;#队列Queue&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
+    
+    
+      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>tensorflow文件操作</title>
+    <link href="https://zhusheng.github.io/2018/09/15/tensorflow-wen-jian-cao-zuo/"/>
+    <id>https://zhusheng.github.io/2018/09/15/tensorflow-wen-jian-cao-zuo/</id>
+    <published>2018-09-15T01:25:00.000Z</published>
+    <updated>2019-09-18T00:32:22.725Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;tensorflow文件操作，包含读取csv文件、csv文件集、图片、二进制文件以及TFRecords文件读取。&lt;/p&gt;
+&lt;h2 id=&quot;读取csv文件&quot;&gt;&lt;a href=&quot;#读取csv文件&quot; class=&quot;headerlink&quot;
         
       
     
@@ -423,35 +540,6 @@
   </entry>
   
   <entry>
-    <title>example</title>
-    <link href="https://zhusheng.github.io/2018/09/07/example/"/>
-    <id>https://zhusheng.github.io/2018/09/07/example/</id>
-    <published>2018-09-07T01:25:00.000Z</published>
-    <updated>2019-09-18T04:43:41.346Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;example&quot;&gt;&lt;a href=&quot;#example&quot; class=&quot;headerlink&quot; title=&quot;example&quot;&gt;&lt;/a&gt;example&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/example.jpg&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Markdown" scheme="https://zhusheng.github.io/categories/Markdown/"/>
-    
-    
-      <category term="Typora" scheme="https://zhusheng.github.io/tags/Typora/"/>
-    
-      <category term="Markdown" scheme="https://zhusheng.github.io/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
     <title>tensorflow介绍</title>
     <link href="https://zhusheng.github.io/2018/09/07/tensorflow-jie-shao/"/>
     <id>https://zhusheng.github.io/2018/09/07/tensorflow-jie-shao/</id>
@@ -479,11 +567,11 @@
   </entry>
   
   <entry>
-    <title>tensorflow梯度下降</title>
-    <link href="https://zhusheng.github.io/2018/09/05/tensorflow-ti-du-xia-jiang/"/>
-    <id>https://zhusheng.github.io/2018/09/05/tensorflow-ti-du-xia-jiang/</id>
-    <published>2018-09-05T01:25:00.000Z</published>
-    <updated>2019-09-18T04:55:41.652Z</updated>
+    <title>example</title>
+    <link href="https://zhusheng.github.io/2018/09/07/example/"/>
+    <id>https://zhusheng.github.io/2018/09/07/example/</id>
+    <published>2018-09-07T01:25:00.000Z</published>
+    <updated>2019-09-18T04:43:41.346Z</updated>
     
     <summary type="html">
     
@@ -491,72 +579,19 @@
       
         
         
-          &lt;p&gt;参考链接：&lt;a href=&quot;http://www.elecfans.com/d/788383.html&quot; target=&quot;_blank&quot;
+          &lt;h1 id=&quot;example&quot;&gt;&lt;a href=&quot;#example&quot; class=&quot;headerlink&quot; title=&quot;example&quot;&gt;&lt;/a&gt;example&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/images/example.jpg&quot;
         
       
     
     </summary>
     
     
-      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
+      <category term="Markdown" scheme="https://zhusheng.github.io/categories/Markdown/"/>
     
     
-      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
+      <category term="Typora" scheme="https://zhusheng.github.io/tags/Typora/"/>
     
-  </entry>
-  
-  <entry>
-    <title>python文件操作</title>
-    <link href="https://zhusheng.github.io/2017/09/12/python-wen-jian-cao-zuo/"/>
-    <id>https://zhusheng.github.io/2017/09/12/python-wen-jian-cao-zuo/</id>
-    <published>2017-09-12T01:25:00.000Z</published>
-    <updated>2019-09-18T01:58:55.883Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;文件分割：split-和splitext&quot;&gt;&lt;a href=&quot;#文件分割：split-和splitext&quot; class=&quot;headerlink&quot; title=&quot;文件分割：split() 和splitext()&quot;&gt;&lt;/a&gt;文件分割：split()
-        
-      
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://zhusheng.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://zhusheng.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python网络请求</title>
-    <link href="https://zhusheng.github.io/2017/09/10/python-wang-luo-qing-qiu/"/>
-    <id>https://zhusheng.github.io/2017/09/10/python-wang-luo-qing-qiu/</id>
-    <published>2017-09-10T01:25:00.000Z</published>
-    <updated>2019-09-18T01:58:51.060Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;python网络请求，介绍了urllib库、request库以及网络请求状态码。&lt;/p&gt;
-&lt;h2 id=&quot;urllib库网络请求&quot;&gt;&lt;a href=&quot;#urllib库网络请求&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://zhusheng.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://zhusheng.github.io/tags/python/"/>
+      <category term="Markdown" scheme="https://zhusheng.github.io/tags/Markdown/"/>
     
   </entry>
   
