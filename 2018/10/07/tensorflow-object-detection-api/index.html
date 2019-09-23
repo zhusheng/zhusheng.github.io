@@ -1,0 +1,1351 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="tensorflow object detection api, Freedom">
+    <meta name="description" content="tensorflow物体识别API安装、使用以及新模型的训练。
+介绍 TensorFlow Object Detection API Github
+注意：object_detection依赖slim。使用时，我们需要将research下的o">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>tensorflow object detection api | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/" class="waves-effect waves-light">
+						
+						<i class="fa fa-home"></i>
+						
+						<span>首页</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/tags" class="waves-effect waves-light">
+						
+						<i class="fa fa-tags"></i>
+						
+						<span>标签</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/categories" class="waves-effect waves-light">
+						
+						<i class="fa fa-bookmark"></i>
+						
+						<span>分类</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/archives" class="waves-effect waves-light">
+						
+						<i class="fa fa-archive"></i>
+						
+						<span>归档</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/about" class="waves-effect waves-light">
+						
+						<i class="fa fa-user-circle-o"></i>
+						
+						<span>关于</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/friends" class="waves-effect waves-light">
+						
+						<i class="fa fa-address-book"></i>
+						
+						<span>友情链接</span>
+					</a>
+          
+        </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Freedom is one of the greatest happiness of god to mankind.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+<li class="m-nav-item">
+			
+				<a href="/" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-home"></i>
+					
+					首页
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/tags" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-tags"></i>
+					
+					标签
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/categories" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-bookmark"></i>
+					
+					分类
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/archives" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-archive"></i>
+					
+					归档
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/about" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-user-circle-o"></i>
+					
+					关于
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/contact" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-comments"></i>
+					
+					Contact
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/friends" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-address-book"></i>
+					
+					友情链接
+				</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/tensorflow.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        tensorflow object detection api
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tensorflow/" target="_blank">
+                                <span class="chip bg-color">tensorflow</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tensorflow/" class="post-category" target="_blank">
+                                tensorflow
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-10-07
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        11 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>tensorflow物体识别API安装、使用以及新模型的训练。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p> <a href="https://github.com/tensorflow/models/research/object_detection" target="_blank" rel="noopener">TensorFlow Object Detection API Github</a></p>
+<p>注意：object_detection依赖slim。使用时，我们需要将research下的object_detection和slim都拷贝出来。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="安装或升级protoc"><a href="#安装或升级protoc" class="headerlink" title="安装或升级protoc"></a>安装或升级protoc</h3><p>在object_detection/ptoroc中，可以看到一些proto文件，我们需要使用protoc程序将这些proto文件编译为python文件才可以。</p>
+<p>TensorFLow Object Detection必须使用2.6.0以上的protoc进行编译，否则会报错。可以使用如下指令查看protoc的版本。</p>
+<pre class=" language-bash"><code class="language-bash">protoc --version</code></pre>
+<p>如果版本低于2.6.0就需要进行版本升级，如果版本高于2.6.0可以忽略当前操作。</p>
+<p><a href="https://github.com/google/protobuf/releases" target="_blank" rel="noopener">protoc下载地址</a></p>
+<p>下载文件后解压，会得到一个 protoc 文件，将它复制到系统的可执行目录即可，例如：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">cp</span> bin/protoc /usr/local/bin</code></pre>
+<p>然后查看版本是否是新安装的版本。</p>
+<h3 id="编译proto文件"><a href="#编译proto文件" class="headerlink" title="编译proto文件"></a>编译proto文件</h3><p>接下来，我们需要将“ object_detection/protos/”下的“.proto”文件进行编译，编译为“.py”文件，执行如下指令：</p>
+<pre class=" language-bash"><code class="language-bash">protoc object_detection/protos/*.proto --python_out<span class="token operator">=</span>.</code></pre>
+<p>运行完，如果每一个“.proto”文件都生成了对于的“.py”文件，说明编译成功了。</p>
+<h3 id="将Slim加入PYTHONPATH"><a href="#将Slim加入PYTHONPATH" class="headerlink" title="将Slim加入PYTHONPATH"></a>将Slim加入PYTHONPATH</h3><p>TensorFlow Object Detection API 是以 Slim 为基础实现的，需要将 Slim 的目录加入 PYTHONPATH 后才能正确运行。具体来说，还是在 research 文 件夹下执行下面的命令。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> PYTHONPATH<span class="token operator">=</span><span class="token variable">$PYTHONPATH</span><span class="token keyword">:</span><span class="token variable"><span class="token variable">`</span><span class="token function">pwd</span><span class="token variable">`</span></span><span class="token keyword">:</span><span class="token variable"><span class="token variable">`</span><span class="token function">pwd</span><span class="token variable">`</span></span>/slim</code></pre>
+<p>执行完，我们打开一个python shell，执行“import slim”，不报错就表示已经正确配置。</p>
+<h3 id="完成安装测试"><a href="#完成安装测试" class="headerlink" title="完成安装测试"></a>完成安装测试</h3><pre class=" language-bash"><code class="language-bash">python object_detection/builders/model_builder_test.py</code></pre>
+<p>这条命令会自动检查 TensorFlow Object Detection API 是否正确安装，如果出现”Ok (skipped=1)”信息，说明己安装成功。</p>
+<h2 id="使用预训练模型"><a href="#使用预训练模型" class="headerlink" title="使用预训练模型"></a>使用预训练模型</h2><p>TensorFlow Object Detection API默认提供了5个与训练模型，它们都是使用COCO数据集训练完成的，结构分别为：</p>
+<ul>
+<li>SSD+MobileNet</li>
+<li>SSD+Inception</li>
+<li>R-FCN+ ResNet101</li>
+<li>Faster RCNN+ResNet101</li>
+<li>Faster RCNN+Inception_ResNet</li>
+</ul>
+<p>如何使用这些模型呢，可以<a href="/Users/zhusheng/WorkSpace/Github/models-master/research/object_detection/object_detection_tutorial.ipynb">参考官方的一个案例</a></p>
+<p>本案例基于官方示例，使用SSD+MobileNet模型进行图片检测。</p>
+<p><a href="http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_2017_11_17.tar.gz" target="_blank" rel="noopener">SSD+MobileNet模型下载地址</a></p>
+<p>说明：执行官方示例会自动下载和解压该模型。执行<code>snkey_object_detection.py</code>需要已经存在该模型。</p>
+<p>案例代码：<code>research/object_detection/snkey_object_detection.py</code>。运行之前，我们需要将模型下载并解压到当前目录。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> six<span class="token punctuation">.</span>moves<span class="token punctuation">.</span>urllib <span class="token keyword">as</span> urllib
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> tarfile
+<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">import</span> zipfile
+
+<span class="token keyword">from</span> distutils<span class="token punctuation">.</span>version <span class="token keyword">import</span> StrictVersion
+<span class="token keyword">from</span> collections <span class="token keyword">import</span> defaultdict
+<span class="token keyword">from</span> io <span class="token keyword">import</span> StringIO
+<span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+
+<span class="token comment" spellcheck="true"># 因为我们的notebook文件位于object_detection文件夹下，</span>
+sys<span class="token punctuation">.</span>path<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">".."</span><span class="token punctuation">)</span>
+<span class="token keyword">from</span> object_detection<span class="token punctuation">.</span>utils <span class="token keyword">import</span> ops <span class="token keyword">as</span> utils_ops
+
+<span class="token keyword">if</span> StrictVersion<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>__version__<span class="token punctuation">)</span> <span class="token operator">&lt;</span> StrictVersion<span class="token punctuation">(</span><span class="token string">'1.12.0'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">raise</span> ImportError<span class="token punctuation">(</span><span class="token string">'Please upgrade your TensorFlow installation to v1.12.*.'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">from</span> utils <span class="token keyword">import</span> label_map_util
+<span class="token keyword">from</span> utils <span class="token keyword">import</span> visualization_utils <span class="token keyword">as</span> vis_util
+
+<span class="token comment" spellcheck="true"># 因为执行object_detection_tutorial notebook文件，模型已经下载到本地了，这里直接使用即可。</span>
+<span class="token comment" spellcheck="true"># 模型</span>
+PATH_TO_FROZEN_GRAPH <span class="token operator">=</span><span class="token string">'ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb'</span>
+<span class="token comment" spellcheck="true"># 标签映射表</span>
+PATH_TO_LABELS <span class="token operator">=</span> <span class="token string">'data/mscoco_label_map.pbtxt'</span>
+
+<span class="token comment" spellcheck="true"># 自定义图，然后将模型加载到内存中</span>
+detection_graph <span class="token operator">=</span> tf<span class="token punctuation">.</span>Graph<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">with</span> detection_graph<span class="token punctuation">.</span>as_default<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  od_graph_def <span class="token operator">=</span> tf<span class="token punctuation">.</span>GraphDef<span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">with</span> tf<span class="token punctuation">.</span>gfile<span class="token punctuation">.</span>GFile<span class="token punctuation">(</span>PATH_TO_FROZEN_GRAPH<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fid<span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># 获取一个文件操作句柄，加载模型文件</span>
+    serialized_graph <span class="token operator">=</span> fid<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    od_graph_def<span class="token punctuation">.</span>ParseFromString<span class="token punctuation">(</span>serialized_graph<span class="token punctuation">)</span>
+    tf<span class="token punctuation">.</span>import_graph_def<span class="token punctuation">(</span>od_graph_def<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 加载标签映射关系文件</span>
+category_index <span class="token operator">=</span> label_map_util<span class="token punctuation">.</span>create_category_index_from_labelmap<span class="token punctuation">(</span>PATH_TO_LABELS<span class="token punctuation">,</span> use_display_name<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 定义2个函数</span>
+<span class="token comment" spellcheck="true"># 加载图片的函数</span>
+<span class="token keyword">def</span> <span class="token function">load_image_into_numpy_array</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token punctuation">(</span>im_width<span class="token punctuation">,</span> im_height<span class="token punctuation">)</span> <span class="token operator">=</span> image<span class="token punctuation">.</span>size
+  <span class="token keyword">return</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>image<span class="token punctuation">.</span>getdata<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>
+      <span class="token punctuation">(</span>im_height<span class="token punctuation">,</span> im_width<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span>np<span class="token punctuation">.</span>uint8<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 预测函数</span>
+<span class="token keyword">def</span> <span class="token function">run_inference_for_single_image</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> graph<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> graph<span class="token punctuation">.</span>as_default<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># Get handles to input and output tensors</span>
+            ops <span class="token operator">=</span> tf<span class="token punctuation">.</span>get_default_graph<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_operations<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            all_tensor_names <span class="token operator">=</span> <span class="token punctuation">{</span>output<span class="token punctuation">.</span>name <span class="token keyword">for</span> op <span class="token keyword">in</span> ops <span class="token keyword">for</span> output <span class="token keyword">in</span> op<span class="token punctuation">.</span>outputs<span class="token punctuation">}</span>
+            tensor_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token keyword">for</span> key <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token string">'num_detections'</span><span class="token punctuation">,</span> <span class="token string">'detection_boxes'</span><span class="token punctuation">,</span> <span class="token string">'detection_scores'</span><span class="token punctuation">,</span><span class="token string">'detection_classes'</span><span class="token punctuation">,</span> <span class="token string">'detection_masks'</span><span class="token punctuation">]</span><span class="token punctuation">:</span> 
+                tensor_name <span class="token operator">=</span> key <span class="token operator">+</span> <span class="token string">':0'</span> 
+                <span class="token keyword">if</span> tensor_name <span class="token keyword">in</span> all_tensor_names<span class="token punctuation">:</span>
+                    tensor_dict<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> tf<span class="token punctuation">.</span>get_default_graph<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_tensor_by_name<span class="token punctuation">(</span>tensor_name<span class="token punctuation">)</span>
+                <span class="token keyword">if</span> <span class="token string">'detection_masks'</span> <span class="token keyword">in</span> tensor_dict<span class="token punctuation">:</span>
+                    <span class="token comment" spellcheck="true"># The following processing is only for single image</span>
+                    detection_boxes <span class="token operator">=</span> tf<span class="token punctuation">.</span>squeeze<span class="token punctuation">(</span>tensor_dict<span class="token punctuation">[</span><span class="token string">'detection_boxes'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    detection_masks <span class="token operator">=</span> tf<span class="token punctuation">.</span>squeeze<span class="token punctuation">(</span>tensor_dict<span class="token punctuation">[</span><span class="token string">'detection_masks'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token comment" spellcheck="true"># Reframe is required to translate mask from box coordinates to image coordinates and fit the image size.</span>
+                    real_num_detection <span class="token operator">=</span> tf<span class="token punctuation">.</span>cast<span class="token punctuation">(</span>tensor_dict<span class="token punctuation">[</span><span class="token string">'num_detections'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> tf<span class="token punctuation">.</span>int32<span class="token punctuation">)</span>
+                    detection_boxes <span class="token operator">=</span> tf<span class="token punctuation">.</span>slice<span class="token punctuation">(</span>detection_boxes<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>real_num_detection<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    detection_masks <span class="token operator">=</span> tf<span class="token punctuation">.</span>slice<span class="token punctuation">(</span>detection_masks<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>real_num_detection<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    detection_masks_reframed <span class="token operator">=</span> utils_ops<span class="token punctuation">.</span>reframe_box_masks_to_image_masks<span class="token punctuation">(</span>detection_masks<span class="token punctuation">,</span> detection_boxes<span class="token punctuation">,</span> image<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> image<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    detection_masks_reframed <span class="token operator">=</span> tf<span class="token punctuation">.</span>cast<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>greater<span class="token punctuation">(</span>detection_masks_reframed<span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tf<span class="token punctuation">.</span>uint8<span class="token punctuation">)</span>
+                    <span class="token comment" spellcheck="true"># Follow the convention by adding back the batch dimension</span>
+                    tensor_dict<span class="token punctuation">[</span><span class="token string">'detection_masks'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tf<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>detection_masks_reframed<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            image_tensor <span class="token operator">=</span> tf<span class="token punctuation">.</span>get_default_graph<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_tensor_by_name<span class="token punctuation">(</span><span class="token string">'image_tensor:0'</span><span class="token punctuation">)</span>
+
+            <span class="token comment" spellcheck="true"># Run inference</span>
+            output_dict <span class="token operator">=</span> sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>tensor_dict<span class="token punctuation">,</span>feed_dict<span class="token operator">=</span><span class="token punctuation">{</span>image_tensor<span class="token punctuation">:</span> image<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+            <span class="token comment" spellcheck="true"># all outputs are float32 numpy arrays, so convert types as appropriate</span>
+            output_dict<span class="token punctuation">[</span><span class="token string">'num_detections'</span><span class="token punctuation">]</span> <span class="token operator">=</span> int<span class="token punctuation">(</span>output_dict<span class="token punctuation">[</span><span class="token string">'num_detections'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            output_dict<span class="token punctuation">[</span><span class="token string">'detection_classes'</span><span class="token punctuation">]</span> <span class="token operator">=</span> output_dict<span class="token punctuation">[</span><span class="token string">'detection_classes'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span>np<span class="token punctuation">.</span>int64<span class="token punctuation">)</span>
+            output_dict<span class="token punctuation">[</span><span class="token string">'detection_boxes'</span><span class="token punctuation">]</span> <span class="token operator">=</span> output_dict<span class="token punctuation">[</span><span class="token string">'detection_boxes'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            output_dict<span class="token punctuation">[</span><span class="token string">'detection_scores'</span><span class="token punctuation">]</span> <span class="token operator">=</span> output_dict<span class="token punctuation">[</span><span class="token string">'detection_scores'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            <span class="token keyword">if</span> <span class="token string">'detection_masks'</span> <span class="token keyword">in</span> output_dict<span class="token punctuation">:</span>
+                output_dict<span class="token punctuation">[</span><span class="token string">'detection_masks'</span><span class="token punctuation">]</span> <span class="token operator">=</span> output_dict<span class="token punctuation">[</span><span class="token string">'detection_masks'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            <span class="token keyword">return</span> output_dict
+
+<span class="token keyword">def</span> <span class="token function">files_path</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    items <span class="token operator">=</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+    newlist <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> items<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> item<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">".jpg"</span><span class="token punctuation">)</span> <span class="token operator">or</span> item<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">".png"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            newlist<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>path<span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>newlist<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> newlist
+
+<span class="token keyword">def</span> <span class="token function">detection</span><span class="token punctuation">(</span>paths<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># Size, in inches, of the output images.</span>
+    IMAGE_SIZE <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 开始对路径下的每张图片进行预测</span>
+    <span class="token keyword">for</span> image_path <span class="token keyword">in</span> paths<span class="token punctuation">:</span>
+        image <span class="token operator">=</span> Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span>image_path<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># the array based representation of the image will be used later in order to prepare the</span>
+        <span class="token comment" spellcheck="true"># result image with boxes and labels on it.</span>
+        image_np <span class="token operator">=</span> load_image_into_numpy_array<span class="token punctuation">(</span>image<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># Expand dimensions since the model expects images to have shape: [1, None, None, 3]</span>
+        image_np_expanded <span class="token operator">=</span> np<span class="token punctuation">.</span>expand_dims<span class="token punctuation">(</span>image_np<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># Actual detection.</span>
+        output_dict <span class="token operator">=</span> run_inference_for_single_image<span class="token punctuation">(</span>image_np_expanded<span class="token punctuation">,</span> detection_graph<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># Visualization of the results of a detection.</span>
+        vis_util<span class="token punctuation">.</span>visualize_boxes_and_labels_on_image_array<span class="token punctuation">(</span>
+            image_np<span class="token punctuation">,</span>
+            output_dict<span class="token punctuation">[</span><span class="token string">'detection_boxes'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            output_dict<span class="token punctuation">[</span><span class="token string">'detection_classes'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            output_dict<span class="token punctuation">[</span><span class="token string">'detection_scores'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            category_index<span class="token punctuation">,</span>
+            instance_masks<span class="token operator">=</span>output_dict<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'detection_masks'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            use_normalized_coordinates<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+            line_thickness<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span>
+        plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span>IMAGE_SIZE<span class="token punctuation">)</span>
+        plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>image_np<span class="token punctuation">)</span>
+        plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>接下来，我们调用上述代码进行预测，预测<code>object_detection/test_images</code>下的图片</p>
+<pre class=" language-python"><code class="language-python">path1 <span class="token operator">=</span> <span class="token string">'test_images'</span>
+paths <span class="token operator">=</span> files_path<span class="token punctuation">(</span>path1<span class="token punctuation">)</span>
+detection<span class="token punctuation">(</span>paths<span class="token punctuation">)</span></code></pre>
+<p>运行效果如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span><span class="token string">'test_images/image1.jpg'</span>, <span class="token string">'test_images/image2.jpg'</span><span class="token punctuation">]</span></code></pre>
+<p><img src="/images/image-20190815155604404.png" alt="image-20190815155604404"></p>
+<p><img src="/images/image-20190815155615314.png" alt="image-20190815155615314"></p>
+<p>上述的模型可以检测的对象见：<code>data/mscoco_label_map.pbtxt</code>，部分内容如下所示：</p>
+<p><img src="/images/image-20190815160115591.png" alt="image-20190815160115591"></p>
+<p>我在本地新建了一个路径，存放了一些百度下载的图片，每个图都有一些上述元素，然后进行预测。</p>
+<pre class=" language-python"><code class="language-python">path2 <span class="token operator">=</span> <span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1'</span>
+paths <span class="token operator">=</span> files_path<span class="token punctuation">(</span>path2<span class="token punctuation">)</span>
+detection<span class="token punctuation">(</span>paths<span class="token punctuation">)</span></code></pre>
+<p>运行结果如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span><span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1/image8.jpg'</span>, <span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1/image7.jpg'</span>, <span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1/image6.jpg'</span>, <span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1/image4.jpg'</span>, <span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1/image5.jpg'</span>, <span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1/image1.jpg'</span>, <span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1/image2.jpg'</span>, <span class="token string">'/Users/zhusheng/WorkSpace/Dataset/15-object_detection/image1/image3.jpg'</span><span class="token punctuation">]</span></code></pre>
+<p>一共8张图片，部分检测结果如下，全部粘贴太占篇幅了。</p>
+<p><img src="/images/image-20190815164253728.png" alt="image-20190815164253728"></p>
+<p><img src="/images/image-20190815164311884.png" alt="image-20190815164311884"></p>
+<h2 id="更换预测模型"><a href="#更换预测模型" class="headerlink" title="更换预测模型"></a>更换预测模型</h2><p>只需要修改上述代码中的2行配置即可。将配置改为其它模型的对应文件即可。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 因为执行object_detection_tutorial notebook文件，模型已经下载到本地了，这里直接使用即可。</span>
+<span class="token comment" spellcheck="true"># 模型</span>
+PATH_TO_FROZEN_GRAPH <span class="token operator">=</span><span class="token string">'ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb'</span>
+<span class="token comment" spellcheck="true"># 标签映射表</span>
+PATH_TO_LABELS <span class="token operator">=</span> <span class="token string">'data/mscoco_label_map.pbtxt'</span></code></pre>
+<h2 id="训练新模型"><a href="#训练新模型" class="headerlink" title="训练新模型"></a>训练新模型</h2><p>以VOC 2012数据集为例，介绍如何使用TensorFlow Object Detection API训练新的模型。</p>
+<p>VOC 2012 是VOC 2007 数据集的升级版，一共有 11530 张 图片，每张图片都有标注，标注的物体包括人、动物(如猫、狗、岛等)、 交通工具(如车、船飞机等)、家具(如椅子、桌子 、沙发等)在内的20个 类别。</p>
+<h3 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h3><p>（1）下载数据集</p>
+<p><a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar" target="_blank" rel="noopener">VOC 2012 数据集</a></p>
+<p>（2）新建voc目录</p>
+<p>在object_detection目录下新建文件夹voc，将数据解压后拷贝到voc中，目录结构如下。</p>
+<pre class=" language-bash"><code class="language-bash">- voc
+    - VOCdevkit
+      - VOC2012
+        - Annotations
+        - ImageSets
+        - JPEGImages
+        - SegmentationClass
+        - SegmentationObject</code></pre>
+<p>（3）转换数据集为records文件</p>
+<p>参与训练的数据需要为records文件格式。</p>
+<p>在object_detection目录下执行如下指令，可以将voc2012数据集转换为tfrecords格式，转换好的tfrecords文件保存在voc文件夹下。</p>
+<pre class=" language-bash"><code class="language-bash">python dataset_tools/create_pascal_tf_record.py --data_dir voc/VOCdevkit/ --year<span class="token operator">=</span>VOC2012 --set<span class="token operator">=</span>train --output_path<span class="token operator">=</span>voc/pascal_train.record
+
+python dataset_tools/create_pascal_tf_record.py --data_dir voc/VOCdevkit/ --year<span class="token operator">=</span>VOC2012 --set<span class="token operator">=</span>val --output_path<span class="token operator">=</span>voc/pascal_val.record</code></pre>
+<p>转换后，会生成2个文件：<code>pascal_train.record</code>和<code>pascal_val.record</code>, 分别对应训练集和测试集，转换过程如下图所示：</p>
+<p><img src="/images/image-20190815104628999.png" alt="image-20190815104628999"></p>
+<p><img src="/images/image-20190815104826147.png" alt="image-20190815104826147"></p>
+<p>说明：这里的转换代码<code>dataset_tools/create_pascal_tf_record.py</code>是专门为voc2012数据集提前编写好的。如果我们想使用自己编写的数据集，有两种方法：</p>
+<ul>
+<li>第一种方法就是修改自己的数据集的标注格式，使其和voc2012一模一样，然后就可以直接使用<code>dataset_tools/create_pascal_tf_record.py</code>转换脚本文件了。</li>
+<li>第二种方法是修改<code>dataset_tools/create_pascal_tf_record.py</code>脚本文件，对读取标签的代码进行修改。</li>
+</ul>
+<p>（4）准备pbtxt映射文件</p>
+<p>将<code>data/pascal_label_map.pbtxt</code>数据复制到voc文件夹，该文件为索引和预测对象类别的映射关系文件。</p>
+<h3 id="准备预训练模型"><a href="#准备预训练模型" class="headerlink" title="准备预训练模型"></a>准备预训练模型</h3><p>这里使用<a href="http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_resnet_v2_atrous_coco_11_06_2017.tar.gz" target="_blank" rel="noopener">Faster R-CNN + Inception_ResNet_v2模型</a>。</p>
+<p>模型文件大小大约700MB，下载模型解压后，得到5个文件，在voc目录中新建文件夹<code>pretrained</code>，将5个文件复制进去。</p>
+<h3 id="准备训练的配置文件"><a href="#准备训练的配置文件" class="headerlink" title="准备训练的配置文件"></a>准备训练的配置文件</h3><p><strong>voc.config</strong></p>
+<p>TensorFlow Object Detection API是依赖一个特殊的设置文件进行训练的。</p>
+<p>在<code>object_detection/samples/configs</code>文件夹下，有一些设置文件的示例。可以参考</p>
+<p><code>object_detection/samples/configs/faster_rcnn_inception_resnet_v2_atrous_pets.config</code>设置文件进行修改。</p>
+<p>在object_detection目录下执行如下指令：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cp</span> samples/configs/faster_rcnn_inception_resnet_v2_atrous_pets.config voc/voc.config</code></pre>
+<p>voc.config文件一共有7处需要修改的地方：</p>
+<ul>
+<li>第一处为num_classes，需要将它改为voc2012中的物体类别数，即20类。</li>
+<li>第二处为eval_config中的num_examples，它表示在验证阶段需要执行的图片数量，修改为voc2012验证集的图片数 5823。我们可以在create_pascal_tf_records.py中，输出examples_list的长度来获取这个数值。</li>
+</ul>
+<p>在文件中搜索examples_list变量的位置，增加如下代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"examples_list:"</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>examples_list<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>然后执行如下指令，相当于再次生成pascal_val.record文件。</p>
+<pre class=" language-bash"><code class="language-bash">python dataset_tools/create_pascal_tf_record.py --data_dir voc/VOCdevkit/ --year<span class="token operator">=</span>VOC2012 --set<span class="token operator">=</span>val --output_path<span class="token operator">=</span>voc/pascal_val.record</code></pre>
+<ul>
+<li>还有5处为所有含有PATH_TO_BE_CONFIGURED的地方，这些地方需要修改为自己的目录，它们应该分别被修改为：</li>
+</ul>
+<pre class=" language-python"><code class="language-python">fine_tune_checkpoint<span class="token punctuation">:</span> <span class="token string">"voc/pretrained/model.ckpt"</span>
+
+train_input_reader<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  tf_record_input_reader <span class="token punctuation">{</span>
+    input_path<span class="token punctuation">:</span> <span class="token string">"voc/pascal_train.record"</span>
+  <span class="token punctuation">}</span>
+  label_map_path<span class="token punctuation">:</span> <span class="token string">"voc/pascal_label_map.pbtxt"</span>
+<span class="token punctuation">}</span>
+
+eval_input_reader<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  tf_record_input_reader <span class="token punctuation">{</span>
+    input_path<span class="token punctuation">:</span> <span class="token string">"voc/pascal_val.record"</span>
+  <span class="token punctuation">}</span>
+  label_map_path<span class="token punctuation">:</span> <span class="token string">"voc/pascal_label_map.pbtxt"</span>
+  shuffle<span class="token punctuation">:</span> false
+  num_readers<span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>train_dir</strong></p>
+<p>在voc文件夹中新建一个文件夹<code>train_dir</code>，作为保存模型和日志的目录。</p>
+<h3 id="开始训练"><a href="#开始训练" class="headerlink" title="开始训练"></a>开始训练</h3><p>在object_detection目录下执行如下指令开始训练：</p>
+<pre class=" language-bash"><code class="language-bash">python legacy/train.py --train_dir voc/train_dir/ --pipeline_config_path voc/voc.config</code></pre>
+<p>我们可以使用tensorboard来监控训练情况。</p>
+<pre class=" language-bash"><code class="language-bash">tensorboard --logdir voc/train_dir/</code></pre>
+<p>大概运行了5分钟，我的电脑资源基本都满了，没办法，我只好终止我的训练过程，最好是准备GPU资源然后再进行训练。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《tensorflow object detection api》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/10/07/tensorflow-object-detection-api/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                Zhu Sheng
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '82041603235fd6f4d599',
+        clientSecret: 'ec0b81ae0bf39c5c17bcc7daf8c0e200a146fa48',
+        repo: 'zhusheng.github.io',
+        owner: 'zhusheng',
+        admin: "zhusheng",
+        id: '2018-10-07T09-25-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/04/07/yingcloud-xiang-mu-kai-fa-1-huan-jing-da-jian/">
+                    <div class="card-image">
+                        
+                        <img src="/images/django.png" class="responsive-img" alt="yingcloud项目开发1-环境搭建">
+                        
+                        <span class="card-title">yingcloud项目开发1-环境搭建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            项目集成了rest_framework、rest_framework.authtoken、rest_framework_swagger、rest_auth等基本框架，使得项目可以对外提供swagger rest api接口，并包含了toke
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/yingcloud/" class="post-category" target="_blank">
+                                    yingcloud
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/django/" target="_blank">
+                        <span class="chip bg-color">django</span>
+                    </a>
+                    
+                    <a href="/tags/yingcloud/" target="_blank">
+                        <span class="chip bg-color">yingcloud</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/10/07/heroku-ru-men/">
+                    <div class="card-image">
+                        
+                        <img src="/images/heroku.png" class="responsive-img" alt="Heroku入门">
+                        
+                        <span class="card-title">Heroku入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Heroku入门
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Heroku/" class="post-category" target="_blank">
+                                    Heroku
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Heroku/" target="_blank">
+                        <span class="chip bg-color">Heroku</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&nbsp;&copy;<a href="https://zhusheng.github.io" target="_blank">John Doe</a>&nbsp;基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
+            <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">27.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("06/28/2019 00:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zhusheng" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1537017271" class="tooltipped" data-tooltip="QQ联系我: 1537017271" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+</body>
+
+</html>
