@@ -1,0 +1,1035 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="人脸识别, Freedom">
+    <meta name="description" content="人脸识别人脸识别原理。。。
+项目运行项目路径：/Users/zhusheng/Codes/tensorflow_snkey/6_face_recognition
+配置环境变量将项目添加到PYTHONPATH环境变量。
+export PYTH">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>人脸识别 | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/" class="waves-effect waves-light">
+						
+						<i class="fa fa-home"></i>
+						
+						<span>首页</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/tags" class="waves-effect waves-light">
+						
+						<i class="fa fa-tags"></i>
+						
+						<span>标签</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/categories" class="waves-effect waves-light">
+						
+						<i class="fa fa-bookmark"></i>
+						
+						<span>分类</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/archives" class="waves-effect waves-light">
+						
+						<i class="fa fa-archive"></i>
+						
+						<span>归档</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/about" class="waves-effect waves-light">
+						
+						<i class="fa fa-user-circle-o"></i>
+						
+						<span>关于</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/contact" class="waves-effect waves-light">
+						
+						<i class="fa fa-comments"></i>
+						
+						<span>留言板</span>
+					</a>
+          
+        </li>
+    
+    <li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/friends" class="waves-effect waves-light">
+						
+						<i class="fa fa-address-book"></i>
+						
+						<span>友情链接</span>
+					</a>
+          
+        </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Freedom is one of the greatest happiness of god to mankind.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+<li class="m-nav-item">
+			
+				<a href="/" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-home"></i>
+					
+					首页
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/tags" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-tags"></i>
+					
+					标签
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/categories" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-bookmark"></i>
+					
+					分类
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/archives" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-archive"></i>
+					
+					归档
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/about" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-user-circle-o"></i>
+					
+					关于
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/contact" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-comments"></i>
+					
+					Contact
+				</a>
+          
+        </li>
+        
+<li class="m-nav-item">
+			
+				<a href="/friends" class="waves-effect waves-light">
+					
+					<i class="fa fa-fw fa-address-book"></i>
+					
+					友情链接
+				</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/tensorflow.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        人脸识别
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Tensorflow/" target="_blank">
+                                <span class="chip bg-color">Tensorflow</span>
+                            </a>
+                        
+                            <a href="/tags/人脸识别/" target="_blank">
+                                <span class="chip bg-color">人脸识别</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Markdown/" class="post-category" target="_blank">
+                                Markdown
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-09-30
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        9 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="人脸识别"><a href="#人脸识别" class="headerlink" title="人脸识别"></a>人脸识别</h2><h3 id="人脸识别原理"><a href="#人脸识别原理" class="headerlink" title="人脸识别原理"></a>人脸识别原理</h3><p>。。。</p>
+<h2 id="项目运行"><a href="#项目运行" class="headerlink" title="项目运行"></a>项目运行</h2><p>项目路径：/Users/zhusheng/Codes/tensorflow_snkey/6_face_recognition</p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>将项目添加到PYTHONPATH环境变量。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> PYTHONPATH<span class="token operator">=</span>/Users/zhusheng/Codes/tensorflow_snkey/6_face_recognition/src</code></pre>
+<p>验证指令，在python shell中执行如下指令，不报错表示配置成功。</p>
+<pre><code>&gt;&gt;&gt; import facenet
+&gt;&gt;&gt; 
+&gt;&gt;&gt; 
+&gt;&gt;&gt; exit()</code></pre><h3 id="模型验证"><a href="#模型验证" class="headerlink" title="模型验证"></a>模型验证</h3><p>使用已有模型验证LFW数据集的准确率。</p>
+<p>预训练模型使用的卷积网络结构是<code>Inception ResNet v1</code>，模型是别人训练开源出来的，如下所示：</p>
+<pre class=" language-bash"><code class="language-bash">➜  20180402-114759 ll
+total 461248
+-rwxr-xr-x@ 1 zhusheng  staff    91M  4  9  2018 20180402-114759.pb
+-rwxr-xr-x@ 1 zhusheng  staff   107M  4  9  2018 model-20180402-114759.ckpt-275.data-00000-of-00001
+-rwxr-xr-x@ 1 zhusheng  staff    22K  4  9  2018 model-20180402-114759.ckpt-275.index
+-rwxr-xr-x@ 1 zhusheng  staff    27M  4  9  2018 model-20180402-114759.meta
+➜  20180402-114759 <span class="token function">pwd</span>
+/Users/zhusheng/WorkSpace/models/1-facenet/20180402-114759</code></pre>
+<p>一共有4个核心文件。训练好的模型在LFW数据集上的准确率可以达到99.2%左右，我们这里验证一下。</p>
+<p><strong>准备LFW人脸数据集</strong></p>
+<p>LFW人脸数据集是由美国马萨诸塞州立大学阿默斯特分校计算机视觉实验室整理完成的数据库，主要用来研究非受限情况下的人脸识别的问题。LFW数据库主要从互联网上搜集图片，一共包含13000多张人脸图像，每张图像都被表示出对应的人名字，其中1680人对应的不只一张图像。</p>
+<p>在LFW数据库中人脸的光照条件、姿态多种多样，有的人脸还存在部分遮挡的情况，因此识别难度较大。现在LFW数据库性能测评已经成为人脸识别算法性能的一个重要指标。</p>
+<p><a href="http://vis-www.cs.umass.edu/lfw/#download" target="_blank" rel="noopener">LFW人脸数据集下载地址</a></p>
+<p>下载之后如下所示，这里我下载了2个，一个是校正后的，一个是原始的。</p>
+<p>全路径如下：</p>
+<pre class=" language-bash"><code class="language-bash">/Users/zhusheng/WorkSpace/Dataset/14-LFW</code></pre>
+<p>在<code>14-LFW/raw/</code>下，每个文件夹代表一个人的名字，在每个人的文件夹下是这个人所有的人脸图像。</p>
+<p><strong>人脸检测和对齐</strong></p>
+<p>处理的第一步是使用MTCNN进行人脸检测和对齐，并统一缩放到合适的大小，MTCNN的实现代码位于<code>src/align/</code>。</p>
+<p>其中<code>src/align/detec_face.py</code>中定义了MTCNN的模型结构，由P-Net、R-Net、O-Net三部分组成。这三部分网络已经提供好了预训练模型，模型数据分别对应文件：<code>det1.npy</code>、<code>det2.npy</code>、<code>det3.npy</code>。</p>
+<p><code>src/align/align_dataset_mtcnn.py</code>是使用MTCNN模型进行人脸检测和对齐的入口代码，<code>align_dataset.py</code>和<code>align_dlib.py</code>都是使用dlib中的传统方法对人脸进行检测，性能比MTCNN稍差，这里略过。</p>
+<p>使用<code>align_dataset_mtcnn.py</code>对LFW数据集进行人脸检测和对齐的指令如下：</p>
+<pre class=" language-bash"><code class="language-bash">python3 src/align/align_dataset_mtcnn.py \
+/Users/zhusheng/WorkSpace/Dataset/14-LFW/raw \
+/Users/zhusheng/WorkSpace/Dataset/14-LFW/lfw_mtcnnpy_160 \
+--image_size 160 \
+--margin 32 \
+--random_order</code></pre>
+<p>该指令会创建文件夹<code>lfw_mtcnnpy_160</code>，并将所有对齐好的人脸图像存放到这个文件夹中，数据的结构和原先相同。参数<code>--image_size 160 --margin 32</code>是在MTCNN检测到的人脸框基础上缩小32像素，将图像缩放到160x160大小。因此，最后得到的对齐后的图像都是160x160像素。这样就成功的从原始图像中检测并对齐了人脸。</p>
+<p>过程耗时挺长的，对齐后的数据集路径：<code>14-LFW/lfw_mtcnnpy_160/</code>。</p>
+<p><strong>验证准确率</strong></p>
+<p>执行如下代码，验证对齐好的LFW数据集在预训练模型上的准确率。</p>
+<pre class=" language-bash"><code class="language-bash">python3 src/validate_on_lfw.py \
+/Users/zhusheng/WorkSpace/Dataset/14-LFW/lfw_mtcnnpy_160 \
+/Users/zhusheng/WorkSpace/models/1-facenet/20180402-114759</code></pre>
+<p>运行需要耗费一定的时间，准确率可以达到98.5%了。</p>
+<h3 id="计算图片之间的距离"><a href="#计算图片之间的距离" class="headerlink" title="计算图片之间的距离"></a>计算图片之间的距离</h3><p>假设现在有三张图片，每个图片包含一张人脸，希望计算它们之间的距离。</p>
+<p>执行代码：</p>
+<pre class=" language-bash"><code class="language-bash">python3 src/compare.py \
+/Users/zhusheng/WorkSpace/models/1-facenet/20180402-114759 \
+test_imgs/1.jpg test_imgs/2.jpg test_imgs/3.jpg</code></pre>
+<p>运行结果如下：</p>
+<p><img src="/.io//../../MarkDown%20Notes/Tensorflow%E9%AB%98%E7%BA%A7/assets/image-20190821135128219.png" alt="image-20190821135128219"></p>
+<p><code>compare.py</code>首先会使用MTCNN在原始图片中进行检测和对齐，然后将结果输入到预训练模型中计算特征。有了特征，接下来就非常简单了，我们可以对特征计算两两之间的距离以得到人脸之间的相似度。</p>
+<p>具体可以参考该代码文件。</p>
+<h2 id="训练新模型"><a href="#训练新模型" class="headerlink" title="训练新模型"></a>训练新模型</h2><p>我们使用的模型是别人开源出来的人脸识别模型，我们也可以自己去训练。</p>
+<p><strong>准备数据集</strong></p>
+<p>从头训练一个新模型需要非常多的训练数据，这里使用CASIA-WebFace数据集，该数据集包含了10575个人的494414张图片，下载完成后，解压到<code>/Users/zhusheng/WorkSpace/Dataset/16-CASIA-WebFace/raw</code>路径下。</p>
+<p>该数据集的结构和LFW一样，每个文件夹代表一个人，文件夹中为这个人的图片。</p>
+<p><strong>人脸检测和对齐</strong></p>
+<p>首先，我们进行人脸检测和对齐：</p>
+<pre class=" language-bash"><code class="language-bash">python3 src/align/align_dataset_mtcnn.py \
+/Users/zhusheng/WorkSpace/Dataset/16-CASIA-WebFace/raw \
+/Users/zhusheng/WorkSpace/Dataset/16-CASIA-WebFace/casia_maxpy_mtcnnpy_182 \
+--image_size 182 \
+--margin 44 \
+--random_order</code></pre>
+<p>对齐后的人脸数据保存在<code>casia_maxpy_mtcnnpy_182</code>文件夹中，所有的图像像素为182x182。最终网络输入的图像像素要求是160x160，这里之所以是182x182，是为了留一定得到空间给数据增强的裁剪环节（在182x182点图像上裁剪出160x160的区域，再送入神经网络进行训练）。</p>
+<p><strong>开始训练</strong></p>
+<p>训练代码为<code>src/train_softmax.py</code>，直接使用即可，该文件使用中心损失来训练模型，如果有自己的需求，可以参考该代码文件进行修改。</p>
+<p>训练指令如下：</p>
+<pre class=" language-bash"><code class="language-bash">python3 src/train_softmax.py \
+--logs_base_dir logs/facenet/ \
+--models_base_dir models/facenet/ \
+--data_dir /Users/zhusheng/WorkSpace/Dataset/16-CASIA-WebFace/casia_maxpy_mtcnnpy_182 \
+--image_size 160 \
+--model_def models.inception_resnet_v1 \
+--lfw_dir /Users/zhusheng/WorkSpace/Dataset/14-LFW/lfw_mtcnnpy_160 \
+--optimizer RMSPROP \
+--learning_rate -1 \
+--max_nrof_epochs 80 \
+--keep_probability 0.8 \
+--random_crop --random_flip \
+--learning_rate_schedule_file data/learning_rate_schedule_classifier_casia.txt \
+--weight_decay 5e-5 \
+--center_loss_factor 1e-2 \
+--center_loss_alfa 0.9</code></pre>
+<p>参数说明：</p>
+<ul>
+<li>logs_base_dir：在src同级目录下新建<code>logs/facenet/</code>,用于保存训练日志文件。运行时，会在该路径下创建一个以当前时间命名的目录，如<code>20190821-114414</code>，日志会写到<code>logs/facenet/20190821-114414/</code>中。所谓的日志文件，其实就是Tensorflow中的events文件，包含了当前的损失、训练步数、学习率等信息，我们可以使用Tensorboard来监听训练过程。</li>
+<li>models_base_dir：在src同级目录下新建<code>models/facenet/</code>,用于保存最终训练后的模型。在运行时同样会创建一个以当前时间命名的文件夹，模型会保存到该目录下。</li>
+<li>data_dir：训练数据集位置。</li>
+<li>image_size：输入神经网络的图片尺寸。</li>
+<li>model_def：很关键的一个参数，它指定了训练的CNN结构为<code>inception_resnet_v1</code>,这样就不用我们自己去设计神经网络结构了。项目支持的CNN结构位于<code>src/models/</code>目录下。</li>
+</ul>
+<p>如果训练过程中出现内存或显存都消耗殆尽的情况，我们可以选择第三个神经网络结构来训练一个较小的模型。</p>
+<ul>
+<li>lfw_dir：指定LFW数据集的位置，如果添加该参数，每执行完一个epochs，就会在LFW数据集上执行一次测试，并将测试的准确率写入到日志文件。</li>
+<li>optimizer：指定优化器。</li>
+<li>learning_rate：学习率，这里指定了负数，表示在程序中将忽略这个参数。而后面的<code>learning_rate_schedule_file</code>参数将规划我们的学习率，因为我们希望学习率不是一成不变的。</li>
+<li>max_nrof_epochs：表示最多会跑80个epochs。</li>
+<li>keep_probability：在全连接层中，加入了dropout，这个参数表示dropout中连接被保持的概率。</li>
+<li>–random_crop —random_flip：这2个参数表示在数据增强时会进行随机的裁剪和旋转。</li>
+<li>learning_rate_schedule_file：在全面我们忽略了learning_rate，最终的学习率是由该文件规划的，文件内容如下：</li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Learning rate schedule</span>
+<span class="token comment" spellcheck="true"># Maps an epoch number to a learning rate</span>
+<span class="token number">0</span><span class="token punctuation">:</span>  <span class="token number">0.1</span>
+<span class="token number">65</span><span class="token punctuation">:</span> <span class="token number">0.01</span>
+<span class="token number">77</span><span class="token punctuation">:</span> <span class="token number">0.001</span>
+<span class="token number">1000</span><span class="token punctuation">:</span> <span class="token number">0.0001</span></code></pre>
+<p>也就是说，一开始，我们使用0.1作为学习率，运行到第65个epochs时使用0.01作为学习率，运行到第77个epochs时使用0.001作为学习率，运行到第1000个epochs时使用0.0001作为学习率。但是由于我们只运行80个epochs，因此最后的一行也没生效。</p>
+<ul>
+<li>weight_decay：所有变量的正则化系数。</li>
+<li>center_loss_factor：中心损失和SoftMax损失中的平衡参数。</li>
+<li>center_loss_alfa：中心损失饿内部参数。</li>
+</ul>
+<p>待训练…</p>
+<p>见2.5.4，因为本地没有CASIA-WebFace数据集，百度网盘下载比较慢，主要是考虑到我没有GPU资源，所以我打算使用Colab来进行我们的训练过程。</p>
+<p>运行结果类似如下：</p>
+<pre class=" language-bash"><code class="language-bash">Epochs: <span class="token punctuation">[</span>0<span class="token punctuation">]</span><span class="token punctuation">[</span>1/1000<span class="token punctuation">]</span>  Time 3.452   Loss 10.075.  RegLoss 0.334
+<span class="token punctuation">..</span>.</code></pre>
+<p>Tensorboard监控</p>
+<pre><code>tensorboard --logdir  logs/facenet/&lt;开始训练时间&gt;/</code></pre><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《人脸识别》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/30/ren-lian-shi-bie/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                Zhu Sheng
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '82041603235fd6f4d599',
+        clientSecret: 'ec0b81ae0bf39c5c17bcc7daf8c0e200a146fa48',
+        repo: 'zhusheng.github.io',
+        owner: 'zhusheng',
+        admin: "zhusheng",
+        id: '2019-09-30T09-25-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/09/30/ren-lian-shi-bie/">
+                    <div class="card-image">
+                        
+                        <img src="/images/tensorflow.png" class="responsive-img" alt="人脸识别">
+                        
+                        <span class="card-title">人脸识别</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍人脸识别原理，三元损失和中心损失，Tensorflow人脸识别，人脸识别框架face_recognition，以及Face++和百度人脸识别的API调用。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Markdown/" class="post-category" target="_blank">
+                                    Markdown
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Tensorflow/" target="_blank">
+                        <span class="chip bg-color">Tensorflow</span>
+                    </a>
+                    
+                    <a href="/tags/人脸识别/" target="_blank">
+                        <span class="chip bg-color">人脸识别</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/09/17/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            John Doe
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&nbsp;&copy;<a href="https://zhusheng.github.io" target="_blank">John Doe</a>&nbsp;基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>&nbsp;主题搭建
+            <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">29.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("06/28/2019 00:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zhusheng" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1537017271" class="tooltipped" data-tooltip="QQ联系我: 1537017271" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/6984b559.js", "daovoice")
+        daovoice('init', {
+            app_id: ""
+        });
+        daovoice('update');
+    </script>
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+</body>
+
+</html>

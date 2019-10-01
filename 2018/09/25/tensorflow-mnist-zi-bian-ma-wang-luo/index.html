@@ -395,7 +395,7 @@
 <h2 id="自编码网络"><a href="#自编码网络" class="headerlink" title="自编码网络"></a>自编码网络</h2><p>本案例讲述基于无监督学习的一个简单应用—<strong>自编码器</strong>，学习用tensorflow构建一个<strong>自编码网络</strong>，并用它在MNIST数据集上进行训练。</p>
 <p>监督学习的重要特征是数据都是有标记的，那么无标记的数据应该使用什么样的网络模型来学习呢，下面我们介绍一种网络模型—-自编码网络。</p>
 <p>自编码网络的作用是将输入样本压缩到隐藏层，然后解压，在输出端重建样本。最终输出层的神经元数量等于输入层的神经元数量，如下图所示。</p>
-<p><img src="/images/image-20190814084403501.png" alt></p>
+<p><img src="/images/image-20190814084403501.png" alt=""></p>
 <h2 id="压缩和解压"><a href="#压缩和解压" class="headerlink" title="压缩和解压"></a>压缩和解压</h2><p>这里面主要有2个过程：压缩和解压。</p>
 <p><strong>压缩</strong>依靠的是输入数据（图像、文字、声音）本身存在不同程度的冗余信息，自动编码网络通过学习去掉这些冗余信息，把有用的特征输入到隐藏层中。</p>
 <p>这里和主成分分析PCA有些类似，要找到可以代表源数据的主要成分，其实，如果激活函数不使用sigmoid等非线形函数，而使用线性函数，就是PCA模型。</p>
@@ -556,7 +556,7 @@ Epoch: 0019 cost<span class="token operator">=</span> 0.092649087
 Epoch: 0020 cost<span class="token operator">=</span> 0.090003498
 Optimization Finished</code></pre>
 <p>效果图如下：</p>
-<p><img src="/images/image-20190816152340615.png" alt></p>
+<p><img src="/images/image-20190816152340615.png" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -916,7 +916,7 @@ Optimization Finished</code></pre>
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.2k</span>&nbsp;字
+                class="white-color">29.9k</span>&nbsp;字
             
             
             

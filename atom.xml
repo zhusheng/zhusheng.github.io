@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://zhusheng.github.io/"/>
-  <updated>2019-09-17T10:50:13.900Z</updated>
+  <updated>2019-09-30T06:05:42.111Z</updated>
   <id>https://zhusheng.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>人脸识别</title>
+    <link href="https://zhusheng.github.io/2019/09/30/ren-lian-shi-bie/"/>
+    <id>https://zhusheng.github.io/2019/09/30/ren-lian-shi-bie/</id>
+    <published>2019-09-30T01:25:00.000Z</published>
+    <updated>2019-09-30T06:05:42.111Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;人脸识别&quot;&gt;&lt;a href=&quot;#人脸识别&quot; class=&quot;headerlink&quot; title=&quot;人脸识别&quot;&gt;&lt;/a&gt;人脸识别&lt;/h2&gt;&lt;h3 id=&quot;人脸识别原理&quot;&gt;&lt;a href=&quot;#人脸识别原理&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Markdown" scheme="https://zhusheng.github.io/categories/Markdown/"/>
+    
+    
+      <category term="Tensorflow" scheme="https://zhusheng.github.io/tags/Tensorflow/"/>
+    
+      <category term="人脸识别" scheme="https://zhusheng.github.io/tags/%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -44,7 +73,7 @@
     <link href="https://zhusheng.github.io/2019/09/07/vue-ru-men/"/>
     <id>https://zhusheng.github.io/2019/09/07/vue-ru-men/</id>
     <published>2019-09-07T01:25:00.000Z</published>
-    <updated>2019-09-18T06:43:50.931Z</updated>
+    <updated>2019-09-23T01:36:50.550Z</updated>
     
     <summary type="html">
     
@@ -72,7 +101,7 @@
     <link href="https://zhusheng.github.io/2019/05/10/yingcloud-xiang-mu-kai-fa-3-wu-ti-jian-ce-md/"/>
     <id>https://zhusheng.github.io/2019/05/10/yingcloud-xiang-mu-kai-fa-3-wu-ti-jian-ce-md/</id>
     <published>2019-05-10T01:25:00.000Z</published>
-    <updated>2019-09-20T00:29:44.813Z</updated>
+    <updated>2019-09-23T01:35:27.560Z</updated>
     
     <summary type="html">
     
@@ -102,7 +131,7 @@
     <link href="https://zhusheng.github.io/2019/04/10/yingcloud-xiang-mu-kai-fa-2-hua-wei-yun-bu-shu/"/>
     <id>https://zhusheng.github.io/2019/04/10/yingcloud-xiang-mu-kai-fa-2-hua-wei-yun-bu-shu/</id>
     <published>2019-04-10T01:25:00.000Z</published>
-    <updated>2019-09-20T00:21:10.606Z</updated>
+    <updated>2019-09-23T01:35:41.034Z</updated>
     
     <summary type="html">
     
@@ -135,7 +164,7 @@
     <link href="https://zhusheng.github.io/2019/04/07/django-ru-men/"/>
     <id>https://zhusheng.github.io/2019/04/07/django-ru-men/</id>
     <published>2019-04-07T01:25:00.000Z</published>
-    <updated>2019-09-18T10:06:16.543Z</updated>
+    <updated>2019-09-24T09:43:42.510Z</updated>
     
     <summary type="html">
     
@@ -164,7 +193,7 @@
     <link href="https://zhusheng.github.io/2019/04/07/yingcloud-xiang-mu-kai-fa-1-huan-jing-da-jian/"/>
     <id>https://zhusheng.github.io/2019/04/07/yingcloud-xiang-mu-kai-fa-1-huan-jing-da-jian/</id>
     <published>2019-04-07T01:25:00.000Z</published>
-    <updated>2019-09-19T05:32:12.016Z</updated>
+    <updated>2019-09-23T01:35:44.702Z</updated>
     
     <summary type="html">
     
@@ -193,7 +222,7 @@
     <link href="https://zhusheng.github.io/2018/10/07/tensorflow-object-detection-api/"/>
     <id>https://zhusheng.github.io/2018/10/07/tensorflow-object-detection-api/</id>
     <published>2018-10-07T01:25:00.000Z</published>
-    <updated>2019-09-23T01:23:03.211Z</updated>
+    <updated>2019-09-23T01:36:04.179Z</updated>
     
     <summary type="html">
     
@@ -221,7 +250,7 @@
     <link href="https://zhusheng.github.io/2018/10/07/heroku-ru-men/"/>
     <id>https://zhusheng.github.io/2018/10/07/heroku-ru-men/</id>
     <published>2018-10-07T01:25:00.000Z</published>
-    <updated>2019-09-18T07:47:01.109Z</updated>
+    <updated>2019-09-23T01:36:47.251Z</updated>
     
     <summary type="html">
     
@@ -562,34 +591,6 @@
 &lt;/ul&gt;
 &lt;p&gt;示例代码如下：&lt;/p&gt;
 &lt;pre class=&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="tensorflow" scheme="https://zhusheng.github.io/categories/tensorflow/"/>
-    
-    
-      <category term="tensorflow" scheme="https://zhusheng.github.io/tags/tensorflow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tensorflow张量和变量</title>
-    <link href="https://zhusheng.github.io/2018/09/08/tensorflow-zhang-liang-he-bian-liang/"/>
-    <id>https://zhusheng.github.io/2018/09/08/tensorflow-zhang-liang-he-bian-liang/</id>
-    <published>2018-09-08T01:25:00.000Z</published>
-    <updated>2019-09-17T11:01:57.110Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;主要介绍tensorflow的张量和变量的基本用法。&lt;/p&gt;
-&lt;h2 id=&quot;Tensor&quot;&gt;&lt;a href=&quot;#Tensor&quot; class=&quot;headerlink&quot;
         
       
     

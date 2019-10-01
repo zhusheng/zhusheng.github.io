@@ -430,7 +430,7 @@ ax<span class="token punctuation">.</span>spines<span class="token punctuation">
 plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"sigmoid"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#设置x轴标签</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span> </code></pre>
 <p>运行结果如下：</p>
-<p><img src="/images/image-20190814090157320.png" alt></p>
+<p><img src="/images/image-20190814090157320.png" alt=""></p>
 <p>然而，sigmoid也有其自身的缺陷，最明显的就是饱和性。从上图可以看到，其两侧导数逐渐趋近于0，也就是𝑥→+∞或𝑥→−∞，函数的导数为0，公式表示如下：<br>$$<br>\lim_{x\rightarrow\infty}{f^{‘}(x) = 0}<br>$$<br>具有这种性质的称为<strong>软饱和激活函数</strong>。具体的，饱和又可分为左饱和与右饱和。与软饱和对应的是硬饱和, 即：<br>$$<br>f^{‘}(x)=0, 当|x|&gt;c, c为常数<br>$$<br>sigmoid的软饱和性，使得深度神经网络在二三十年里一直难以有效的训练，是阻碍神经网络发展的重要原因。</p>
 <p>具体来说，由于在后向传递过程中，sigmoid向下传导的梯度包含了一个 f′(x)因子（sigmoid关于输入的导数），因此一旦输入落入饱和区，f′(x) 就会变得接近于0，导致了向底层传递的梯度也变得非常小。此时，网络参数很难得到有效训练。这种现象被称为梯度消失。一般来说， sigmoid 网络在5层之内就会产生梯度消失现象。</p>
 <p>此外，sigmoid函数的输出均大于0，使得输出不是0均值，这称为偏移现象，这会导致后一层的神经元将得到上一层输出的非0均值的信号作为输入。</p>
@@ -471,14 +471,14 @@ plt<span class="token punctuation">.</span>plot<span class="token punctuation">(
 plt<span class="token punctuation">.</span>legend<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>运行结果如下：</p>
-<p><img src="/images/image-20190814091120437.png" alt></p>
+<p><img src="/images/image-20190814091120437.png" alt=""></p>
 <p>从图中可以看出，tanh和Sigmoid一样，也具有软饱和性，在$x\rightarrow\infty$时从而造成梯度消失。</p>
 <h3 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h3><p>ReLU家族包含很多激活函数：ReLU、ELU、P-ReLU、Leaky-ReLU、R-ReLU，其它都是基于ReLU作出的各种变体或改造。</p>
 <p>ReLU的全称是Rectified Linear Units，是一种后来才出现的激活函数。 公式如下：<br>$$<br>f(x)=\begin{cases}<br>x &amp; x\geq0 \<br>0 &amp; x&lt;0\<br>\end{cases}<br>$$<br>可以看到，当x&lt;0时，ReLU硬饱和，而当x&gt;0时，则不存在饱和问题。所以，ReLU 能够在x&gt;0时保持梯度不衰减，从而缓解梯度消失问题。这让我们能够直接以监督的方式训练深度神经网络，而无需依赖无监督的逐层预训练。</p>
 <p>ReLU函数代表的的是“修正线性单元”，它是带有卷积图像的输入x的最大函数(x,0)。ReLU函数将矩阵x内所有负值都设为零，其余的值不变。ReLU函数的计算是在卷积之后进行的，因此它与tanh函数和sigmoid函数一样，同属于“非线性激活函数”。这一内容是由Geoff Hinton首次提出的。</p>
 <p>ReLU 的缺点： 训练的时候很”脆弱”，很容易就”die”了。例如，一个非常大的梯度流过一个 ReLU 神经元，更新过参数之后，这个神经元再也不会对任何数据有激活现象了，那么这个神经元的梯度就永远都会是0。如果 learning rate 很大，那么很有可能网络中的 40% 的神经元都”dead”了。</p>
 <p>如下是ReLU、Leaky ReLU、PReLU和RReLU的比较:</p>
-<p><img src="/images/image-20190814091757459.png" alt></p>
+<p><img src="/images/image-20190814091757459.png" alt=""></p>
 <h3 id="Maxout"><a href="#Maxout" class="headerlink" title="Maxout"></a>Maxout</h3><p>maxout是通过分段线性函数来拟合所有可能的凸函数来作为激活函数的，但是由于线性函数是可学习，所以实际上是可以学出来的激活函数。具体操作是对所有线性取最大，也就是把若干直线的交点作为分段的界，然后每一段取最大。</p>
 <p>maxout可以看成是relu家族的一个推广。</p>
 <p>缺点在于增加了参数量。</p>
@@ -841,7 +841,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.2k</span>&nbsp;字
+                class="white-color">29.9k</span>&nbsp;字
             
             
             

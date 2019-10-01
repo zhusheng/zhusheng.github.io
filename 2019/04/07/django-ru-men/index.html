@@ -313,7 +313,7 @@ python -m dj">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/vue.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/django.png')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -376,14 +376,14 @@ python -m dj">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        777
+                        872
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        4 分
                     </div>
                     
                 
@@ -415,7 +415,9 @@ python -m django --version</code></pre>
     <span class="token string">'polls.apps.PollsConfig'</span>
 <span class="token punctuation">]</span></code></pre>
 <h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><pre class=" language-bash"><code class="language-bash">python manage.py runserver</code></pre>
-<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>项目第一次运行，需要执行:</p>
+<p>默认端口号：8000</p>
+<p>指定启动端口</p>
+<pre><code>python manage.py runserver 8888</code></pre><h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>项目第一次运行，需要执行:</p>
 <pre class=" language-bash"><code class="language-bash">python manage.py migrate</code></pre>
 <p>以后每次的数据库更改，执行如下操作:</p>
 <pre class=" language-bash"><code class="language-bash">python manage.py makemigrations 
@@ -424,6 +426,18 @@ python manage.py migrate </code></pre>
 <p>【拓展】<br>我们也可以对指定的APP进行数据库更新操作:</p>
 <pre class=" language-bash"><code class="language-bash">python manage.py makemigrations polls
 python manage.py migrate polls</code></pre>
+<p>查看migrate做了哪些操作？如下所示</p>
+<pre class=" language-bash"><code class="language-bash">manage.py@snkey_blog_v1 <span class="token operator">></span> sqlmigrate blog 0001
+<span class="token function">bash</span> -cl <span class="token string">"/Users/zhusheng/PycharmProjects/snkey_blog_v1/venv/bin/python /Applications/PyCharm.app/Contents/helpers/pycharm/django_manage.py sqlmigrate blog 0001 /Users/zhusheng/PycharmProjects/snkey_blog_v1"</span>
+Tracking <span class="token function">file</span> by folder pattern:  migrations
+BEGIN<span class="token punctuation">;</span>
+--
+-- Create model Article
+--
+CREATE TABLE <span class="token string">"blog_article"</span> <span class="token punctuation">(</span><span class="token string">"id"</span> integer NOT NULL PRIMARY KEY AUTOINCREMENT, <span class="token string">"title"</span> varchar<span class="token punctuation">(</span>50<span class="token punctuation">)</span> NOT NULL, <span class="token string">"content"</span> text NULL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+COMMIT<span class="token punctuation">;</span>
+
+Process finished with <span class="token keyword">exit</span> code 0</code></pre>
 <h3 id="python-shell"><a href="#python-shell" class="headerlink" title="python shell"></a>python shell</h3><p>我们可以进入python shell环境，</p>
 <pre class=" language-bash"><code class="language-bash">python manage.py shell</code></pre>
 <h3 id="创建超级用户"><a href="#创建超级用户" class="headerlink" title="创建超级用户"></a>创建超级用户</h3><pre class=" language-bash"><code class="language-bash">python manage.py createsuperuser</code></pre>
@@ -856,7 +870,7 @@ python manage.py migrate polls</code></pre>
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.2k</span>&nbsp;字
+                class="white-color">29.9k</span>&nbsp;字
             
             
             
